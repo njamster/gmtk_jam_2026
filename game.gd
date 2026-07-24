@@ -9,7 +9,8 @@ func _ready() -> void:
 
 	for i in Global.num_players:
 		var player := preload("res://player/player.tscn").instantiate()
-		player.id = i + 1
+		if Global.num_players > 1:
+			player.id = i + 1
 		if player.id == 1:
 			player.global_position = $TileMap.map_to_local(Vector2i(0, 16))
 		else:
