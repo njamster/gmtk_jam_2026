@@ -16,6 +16,8 @@ func _ready() -> void:
 func _update_stats() -> void:
 	if Global.stats[player_id].death_reason:
 		$DeathReason.text = Global.stats[player_id].death_reason
+	else:
+		$DeathReason.text = "You survived!"
 
 	%SurvivalTime/Value.text = "%02d:%02d" % [
 		Global.stats[player_id].survival_time / 60,

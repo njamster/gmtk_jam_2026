@@ -31,6 +31,10 @@ func _ready():
 			die("You got killed by an enemy!")
 	)
 
+	area_entered.connect(func(_area):
+		die("")  # Looks funny, but this means you actually survived :D
+	)
+
 	if Global.auto_move:
 		move()
 
