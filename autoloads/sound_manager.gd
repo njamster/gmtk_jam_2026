@@ -3,7 +3,7 @@ extends Node
 const MAX_SIMULTANEOUS_SOUNDS := 10
 
 
-func play_music(stream: AudioStream, fade_over := true) -> void:
+func play_music(stream: AudioStream, loop := true, fade_over := true) -> void:
 	var old_track_playing := $Music.get_child_count() > 0
 
 	if old_track_playing:
@@ -18,6 +18,8 @@ func play_music(stream: AudioStream, fade_over := true) -> void:
 	var new_track := AudioStreamPlayer.new()
 	new_track.stream = stream
 	new_track.bus = "Music"
+	if loop:
+		new_track.finished.connect(new_track.play)
 	$Music.add_child(new_track)
 	new_track.play()
 

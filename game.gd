@@ -5,7 +5,7 @@ var survival_time := 0.0
 
 
 func _ready() -> void:
-	SoundManager.play_music(preload("res://music/background_music.ogg"), false)
+	SoundManager.play_music(preload("res://music/background_music.ogg"), true, false)
 
 	for i in Global.num_players:
 		var player := preload("res://player/player.tscn").instantiate()
