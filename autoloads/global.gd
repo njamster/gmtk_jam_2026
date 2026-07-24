@@ -53,6 +53,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		var master_id := AudioServer.get_bus_index("Master")
 		AudioServer.set_bus_mute(master_id, not AudioServer.is_bus_mute(master_id))
 
+	if OS.is_debug_build():
+		if event is InputEventKey and event.keycode == KEY_SHIFT:
+			if event.pressed:
+				Engine.time_scale = 5.0
+			else:
+				Engine.time_scale = 1.0
+
 
 func reset_stats() -> void:
 	for i in num_players:
