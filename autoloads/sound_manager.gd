@@ -42,4 +42,4 @@ func play_sound(stream: AudioStream, randomize_pitch := false) -> void:
 
 		player.finished.connect(player.queue_free)
 	else:
-		print("Sound limit reached!")
+		push_warning("Sound limit reached!")
