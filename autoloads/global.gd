@@ -4,7 +4,7 @@ var tilemap: TileMapLayer
 
 var tile_size := 32
 
-var num_players := 2
+var num_players := 1
 var num_enemies := 20
 
 # cheat codes :D

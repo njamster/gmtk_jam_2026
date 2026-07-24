@@ -27,5 +27,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	survival_time += delta
 	$SurvivalTime.text = "%02d:%02d" % [survival_time / 60, fmod(survival_time, 60)]
-	$JumpsP1.text = "Jumps: " + str(Global.stats[0].jumps)
-	$JumpsP2.text = "Jumps: " + str(Global.stats[1].jumps)
+	if Global.num_players >= 1:
+		$JumpsP1.text = "Jumps: " + str(Global.stats[0].jumps)
+	if Global.num_players >= 2:
+		$JumpsP2.text = "Jumps: " + str(Global.stats[1].jumps)
