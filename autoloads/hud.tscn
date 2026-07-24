@@ -36,48 +36,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "GAME OVER"
 
-[node name="FlavorText" type="Label" parent="GameOverScreen/VBox" unique_id=1494348360]
+[node name="Stats" type="HBoxContainer" parent="GameOverScreen/VBox" unique_id=683814647]
 unique_name_in_owner = true
 layout_mode = 2
-text = "You died!"
-horizontal_alignment = 1
-
-[node name="Stats" type="GridContainer" parent="GameOverScreen/VBox" unique_id=745633273]
-layout_mode = 2
-columns = 2
-
-[node name="Time" type="Label" parent="GameOverScreen/VBox/Stats" unique_id=345879831]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Survived?"
-
-[node name="SurvivalTime" type="Label" parent="GameOverScreen/VBox/Stats" unique_id=1065630496]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 8
-text = "Yes"
-
-[node name="Jumps" type="Label" parent="GameOverScreen/VBox/Stats" unique_id=1588526957]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Jumps:"
-
-[node name="NumJumps" type="Label" parent="GameOverScreen/VBox/Stats" unique_id=1841581279]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 8
-text = "0"
-
-[node name="Survived" type="Label" parent="GameOverScreen/VBox/Stats" unique_id=737152208]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Survived?"
-
-[node name="SurvivedState" type="Label" parent="GameOverScreen/VBox/Stats" unique_id=1067862855]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 8
-text = "Yes"
+theme_override_constants/separation = 48
 
 [node name="RetryText" type="Label" parent="GameOverScreen/VBox" unique_id=695174199]
 layout_mode = 2

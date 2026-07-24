@@ -80,7 +80,7 @@ func move():
 
 	await tween.finished
 
-	if is_dead:
+	if is_dead and Global.num_alive_players == 0:
 		Global.game_state_changed.emit(Global.GameState.GAME_OVER)
 
 	if Global.decay_enabled:
@@ -94,6 +94,7 @@ func move():
 
 func die(reason: String):
 	is_dead = true
+	Global.num_alive_players -= 1
 	Global.stats[id-1].death_reason = reason
 	Global.stats[id-1].survival_time = Global.survival_time
 	SoundManager.play_sound(preload("res://player/sounds/hurt.wav"))

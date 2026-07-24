@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c80a3ri0pu64y"]
+
+[ext_resource type="Script" uid="uid://bue0l2tiherks" path="res://autoloads/game_over_screen/player_stats.gd" id="1_is7g6"]
+
+[node name="PlayerStats" type="VBoxContainer" unique_id=1887806138]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_is7g6")
+
+[node name="Player" type="Label" parent="." unique_id=1899249669]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="DeathReason" type="Label" parent="." unique_id=1934696774]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Stats" type="VBoxContainer" parent="." unique_id=43485067]
+layout_mode = 2
+
+[node name="SurvivalTime" type="HBoxContainer" parent="Stats" unique_id=513442099]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Stats/SurvivalTime" unique_id=450241700]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Time:"
+
+[node name="Value" type="Label" parent="Stats/SurvivalTime" unique_id=671965437]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Yes"
+
+[node name="NumJumps" type="HBoxContainer" parent="Stats" unique_id=1551478125]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Stats/NumJumps" unique_id=1475476180]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Jumps:"
+
+[node name="Value" type="Label" parent="Stats/NumJumps" unique_id=1364634105]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Yes"
+
+[node name="SurvivedState" type="HBoxContainer" parent="Stats" unique_id=1307769240]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Stats/SurvivedState" unique_id=1853167778]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Survived?"
+
+[node name="Value" type="Label" parent="Stats/SurvivedState" unique_id=434474208]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Yes"

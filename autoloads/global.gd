@@ -13,8 +13,10 @@ var tilemap: TileMapLayer
 
 var tile_size := 32
 
-var num_players := 1
+var num_players := 2
 var num_enemies := 20
+
+var num_alive_players := num_players
 
 # cheat codes :D
 var decay_enabled := true
@@ -31,8 +33,9 @@ func _ready() -> void:
 
 	for i in num_players:
 		stats.append({
+			"survival_time": 0.0,
 			"jumps": 0,
-			"survived": true,
+			"death_reason": "",
 		})
 
 	survival_time = 0.0
@@ -54,8 +57,11 @@ func _unhandled_input(event: InputEvent) -> void:
 func reset_stats() -> void:
 	for i in num_players:
 		stats[i] = {
+			"survival_time": 0.0,
 			"jumps": 0,
-			"survived": true,
+			"death_reason": "",
 		}
 
 	survival_time = 0.0
+
+	num_alive_players = num_players
