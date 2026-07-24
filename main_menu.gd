@@ -1,0 +1,34 @@
+extends Control
+
+
+func _ready() -> void:
+	%Buttons/Play.pressed.connect(_play)
+	%Buttons/Settings.pressed.connect(_settings)
+	%Buttons/Credits.pressed.connect(_credits)
+
+	if OS.get_name() == "web":
+		%Buttons/QuitGame.queue_free()
+	else:
+		%Buttons/QuitGame.pressed.connect(_quit)
+
+	# make button focus wrap around at the ends of the button list
+	%Buttons.get_child(0).focus_neighbor_top = %Buttons.get_child(-1).get_path()
+	%Buttons.get_child(-1).focus_neighbor_bottom = %Buttons.get_child(0).get_path()
+
+	%Buttons/Play.grab_focus()
+
+
+func _play() -> void:
+	get_tree().change_scene_to_file("res://game/game.tscn")
+
+
+func _settings() -> void:
+	get_tree().change_scene_to_file("res://settings/settings.tscn")
+
+
+func _credits() -> void:
+	get_tree().change_scene_to_file("res://credits/credits.tscn")
+
+
+func _quit() -> void:
+	get_tree().quit()

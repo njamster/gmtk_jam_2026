@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://rl82ga8sdyau"]
+
+[ext_resource type="Script" uid="uid://b0uxrrf257f71" path="res://credits/credits.gd" id="1_5uwby"]
+
+[node name="Credits" type="Control" unique_id=1461925648]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5uwby")
+
+[node name="Background" type="ColorRect" parent="." unique_id=451340870]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="OuterMargin" type="MarginContainer" parent="." unique_id=487806912]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBox" type="VBoxContainer" parent="OuterMargin" unique_id=1893365166]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="OuterMargin/VBox" unique_id=1640572941]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 128
+text = "Credits"
+
+[node name="Scrollable" type="ScrollContainer" parent="OuterMargin/VBox" unique_id=823856701]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Credits" type="VBoxContainer" parent="OuterMargin/VBox/Scrollable" unique_id=111187043]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 32
+
+[node name="Back" type="Button" parent="OuterMargin" unique_id=1081379546]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "Back"

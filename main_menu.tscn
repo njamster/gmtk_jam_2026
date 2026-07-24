@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dyniakbkfydup"]
+
+[ext_resource type="Script" uid="uid://chy4gbnq4eqfx" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Control" unique_id=2027714392]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1981208960]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="OuterMargin" type="MarginContainer" parent="." unique_id=1135200701]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Title" type="Label" parent="OuterMargin" unique_id=901918845]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 128
+text = "GraveRobber"
+
+[node name="Buttons" type="VBoxContainer" parent="OuterMargin" unique_id=60716327]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="Play" type="Button" parent="OuterMargin/Buttons" unique_id=2044201246]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="Settings" type="Button" parent="OuterMargin/Buttons" unique_id=855268533]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+
+[node name="Credits" type="Button" parent="OuterMargin/Buttons" unique_id=852911542]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+
+[node name="QuitGame" type="Button" parent="OuterMargin/Buttons" unique_id=1609027]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit Game"

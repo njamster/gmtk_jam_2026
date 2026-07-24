@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dlb18ix6exq3t"]
+
+[ext_resource type="Script" uid="uid://dpujtpm423xx3" path="res://settings/settings.gd" id="1_iirne"]
+
+[node name="Settings" type="Control" unique_id=810074774]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iirne")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1572571887]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="OuterMargin" type="MarginContainer" parent="." unique_id=1393971038]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Title" type="Label" parent="OuterMargin" unique_id=710052308]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 128
+text = "Settings"
+
+[node name="Settings" type="VBoxContainer" parent="OuterMargin" unique_id=2001935208]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Audio" type="Label" parent="OuterMargin/Settings" unique_id=2037750698]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="AudioSettings" type="VBoxContainer" parent="OuterMargin/Settings" unique_id=1455047535]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Back" type="Button" parent="OuterMargin" unique_id=635150240]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "Back"

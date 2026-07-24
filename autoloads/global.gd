@@ -30,7 +30,9 @@ var survival_time := 0.0
 
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN#
+
+	_load_settings()
 
 	for i in num_players:
 		stats.append({
@@ -41,6 +43,24 @@ func _ready() -> void:
 		})
 
 	survival_time = 0.0
+
+
+func _load_settings() -> void:
+	var settings_file = ConfigFile.new()
+	var error := settings_file.load("user://settings.cfg")
+
+	if error:
+		return  # early
+
+	for i in AudioServer.bus_count:
+		AudioServer.set_bus_volume_linear(
+			i,
+			clampf(
+				settings_file.get_value("Audio", AudioServer.get_bus_name(i), 1.0),
+				0.0,
+				1.0
+			)
+		)
 
 
 func _process(delta: float) -> void:
