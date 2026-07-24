@@ -29,26 +29,31 @@ const atlas_coords := [
 	DURABILITY_9
 ]
 
+const MIN_X := 1
+const MAX_X := 39
+const MIN_Y := 1
+const MAX_Y := 22
+
 
 func _ready() -> void:
 	Global.tilemap = self
+	Global.tile_size = tile_set.tile_size.x
 
 	randomize_counters()
-
-
 
 	await get_tree().create_timer(1.0).timeout
 	earthquake()
 
 
 func randomize_counters() -> void:
-	for x in range(3, 57):
-		for y in range(2, 32):
+	for x in range(MIN_X, MAX_X):
+		for y in range(MIN_Y, MAX_Y):
 			var cell = Vector2i(x, y)
 			if get_cell_atlas_coords(cell) == WALL_TILE or \
+			   get_cell_atlas_coords(cell) == GAP_TILE or \
 			   get_cell_atlas_coords(cell) == STURDY_FLOOR:
 				continue
-			set_cell(cell, 1, atlas_coords[randi_range(1, 9)])
+			set_cell(cell, 0, atlas_coords[randi_range(1, 9)])
 
 			if randi_range(1, 5) == 1:
 				var gold := preload("res://collectibles/gold.tscn").instantiate()
@@ -79,32 +84,33 @@ func count_down_cell(cell: Vector2i, play_sounds := true) -> void:
 	var tile_data = get_cell_atlas_coords(cell)
 	match tile_data:
 		DURABILITY_9:
-			set_cell(cell, 1, DURABILITY_8)
+			set_cell(cell, 0, DURABILITY_8)
 		DURABILITY_8:
-			set_cell(cell, 1, DURABILITY_7)
+			set_cell(cell, 0, DURABILITY_7)
 		DURABILITY_7:
-			set_cell(cell, 1, DURABILITY_6)
+			set_cell(cell, 0, DURABILITY_6)
 		DURABILITY_6:
-			set_cell(cell, 1, DURABILITY_5)
+			set_cell(cell, 0, DURABILITY_5)
 		DURABILITY_5:
-			set_cell(cell, 1, DURABILITY_4)
+			set_cell(cell, 0, DURABILITY_4)
 		DURABILITY_4:
-			set_cell(cell, 1, DURABILITY_3)
+			set_cell(cell, 0, DURABILITY_3)
 		DURABILITY_3:
-			set_cell(cell, 1, DURABILITY_2)
+			set_cell(cell, 0, DURABILITY_2)
 		DURABILITY_2:
-			set_cell(cell, 1, DURABILITY_1)
+			set_cell(cell, 0, DURABILITY_1)
 		DURABILITY_1:
-			set_cell(cell, 1, GAP_TILE)
+			set_cell(cell, 0, GAP_TILE)
 			if play_sounds:
 				SoundManager.play_sound(preload("res://tilemap/sounds/crumble.wav"))
 
 
 func earthquake() -> void:
-	for x in range(3, 57):
-		for y in range(2, 32):
+	for x in range(MIN_X, MAX_X):
+		for y in range(MIN_Y, MAX_Y):
 			var cell = Vector2i(x, y)
 			if get_cell_atlas_coords(cell) == WALL_TILE or \
+			   get_cell_atlas_coords(cell) == GAP_TILE or \
 			   get_cell_atlas_coords(cell) == STURDY_FLOOR:
 					continue
 			count_down_cell(cell, false)
@@ -114,10 +120,11 @@ func earthquake() -> void:
 
 
 func small_earthquake() -> void:
-	for x in range(3, 57):
-		for y in range(2, 32):
+	for x in range(MIN_X, MAX_X):
+		for y in range(MIN_Y, MAX_Y):
 			var cell = Vector2i(x, y)
 			if get_cell_atlas_coords(cell) == WALL_TILE or \
+			   get_cell_atlas_coords(cell) == GAP_TILE or \
 			   get_cell_atlas_coords(cell) == STURDY_FLOOR:
 					continue
 

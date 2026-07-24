@@ -12,10 +12,10 @@ signal game_state_changed(state: GameState)
 var tilemap: TileMapLayer
 var camera: Camera2D
 
-var tile_size := 32
+var tile_size
 
 var num_players := 2
-var num_enemies := 0
+var num_enemies := 10
 
 var num_alive_players := num_players
 

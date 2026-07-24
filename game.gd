@@ -11,14 +11,18 @@ func _ready() -> void:
 		if Global.num_players > 1:
 			player.id = i + 1
 		if player.id == 1:
-			player.global_position = $TileMap.map_to_local(Vector2i(0, 16))
+			player.global_position = $TileMap.map_to_local(Vector2i(0, 10)) + $TileMap.position
 		else:
-			player.global_position = $TileMap.map_to_local(Vector2i(0, 17))
+			player.global_position = $TileMap.map_to_local(Vector2i(0, 11)) + $TileMap.position
 		add_child(player)
 
 	for i in Global.num_enemies:
 		var enemy := preload("res://enemies/enemy.tscn").instantiate()
-		enemy.global_position = $TileMap.map_to_local(Vector2i(randi_range(3, 56), randi_range(3, 31)))
+		enemy.global_position = $TileMap.map_to_local(
+			Vector2i(
+				randi_range(3, $TileMap.MAX_X),
+				randi_range(3, $TileMap.MAX_Y))
+		)
 		add_child(enemy)
 
 

@@ -6,6 +6,7 @@
 radius = 1.0
 
 [node name="Gold" type="Area2D" unique_id=1756101319 groups=["Collectible"]]
+scale = Vector2(1.8, 1.8)
 collision_layer = 16
 collision_mask = 2
 monitoring = false
