@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="gmtk_jam_2026"
+config/name="GMTK Jam (2026)"
 run/main_scene="uid://way5r71iar1n"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
