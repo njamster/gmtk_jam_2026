@@ -18,7 +18,7 @@ func _ready() -> void:
 
 	for i in Global.num_enemies:
 		var enemy := preload("res://enemies/enemy.tscn").instantiate()
-		enemy.global_position = $TileMap.map_to_local(Vector2i(randi_range(2, 57), randi_range(2, 31)))
+		enemy.global_position = $TileMap.map_to_local(Vector2i(randi_range(3, 56), randi_range(3, 31)))
 		add_child(enemy)
 
 
