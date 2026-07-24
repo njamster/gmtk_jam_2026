@@ -1,7 +1,5 @@
 extends Area2D
 
-const MAX_MOVE_SPEED := 0.16 # seconds per tile
-
 var id: int
 
 var inputs = {
@@ -47,7 +45,6 @@ func _unhandled_input(event):
 			action = "%s_p%d" % [dir, id]
 		if event.is_action_pressed(action):
 			direction = inputs[dir]
-			move_speed = min(move_speed + 0.02, 0.4)
 			if not Global.auto_move and not is_dead and not is_moving:
 				move()
 
@@ -61,7 +58,6 @@ func move():
 	if not Global.tilemap.is_blocked(position + direction * Global.tile_size):
 		# next tile is free
 		tween.tween_property(self, "position", direction * Global.tile_size, move_speed).as_relative()
-		move_speed = max(move_speed - 0.02, MAX_MOVE_SPEED)
 	elif Global.tilemap.is_gap(position + direction * Global.tile_size):
 		# next tile is a gap...
 		if not Global.tilemap.is_blocked(position + 2 * direction * Global.tile_size):
