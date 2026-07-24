@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://di6s134qdw6lq" path="res://tilemap/tilemap.png" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://khdcu5d80sr1" path="res://game.gd" id="1_feb5d"]
+[ext_resource type="Script" uid="uid://dvctpg6ga8biw" path="res://camera.gd" id="2_fc0e3"]
 [ext_resource type="Script" uid="uid://dexbn7g55tlbf" path="res://tilemap/tile_map.gd" id="3_fc0e3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_feb5d"]
@@ -47,6 +48,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_feb5d")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=928046091]
+anchor_mode = 0
+script = ExtResource("2_fc0e3")
 
 [node name="TileMap" type="TileMapLayer" parent="." unique_id=25411223]
 use_parent_material = true

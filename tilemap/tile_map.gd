@@ -110,6 +110,7 @@ func earthquake() -> void:
 			count_down_cell(cell, false)
 
 	SoundManager.play_sound(preload("res://tilemap/sounds/earthquake.wav"))
+	Global.camera.screenshake(0.45)
 
 
 func small_earthquake() -> void:
@@ -124,3 +125,4 @@ func small_earthquake() -> void:
 				count_down_cell(cell, false)
 
 	SoundManager.play_sound(preload("res://tilemap/sounds/earthquake.wav"))
+	Global.camera.screenshake(0.35)
