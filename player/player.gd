@@ -17,9 +17,6 @@ var is_dead := false
 
 
 func _ready():
-	position = position.snapped(Vector2.ONE * Global.tile_size)
-	position += Vector2.ONE * Global.tile_size/2
-
 	match id:
 		1:
 			$Sprite.modulate = Color.BLUE

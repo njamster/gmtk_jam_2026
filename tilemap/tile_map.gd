@@ -22,11 +22,12 @@ func _ready() -> void:
 
 
 func randomize_counters() -> void:
-	for cell in get_used_cells():
-		if get_cell_atlas_coords(cell) == Vector2i(0, 0):
-			continue
-		set_cell(cell, 1, atlas_coords[randi_range(1, 9)])
-		#set_cell(0, cell, 1, atlas_coords[1 + randi() % 9])
+	for x in range(3, 57):
+		for y in range(2, 32):
+			var cell = Vector2i(x, y)
+			if get_cell_atlas_coords(cell) == Vector2i(0, 0):
+				continue
+			set_cell(cell, 1, atlas_coords[randi_range(1, 9)])
 
 
 func is_blocked(pos: Vector2) -> bool:
