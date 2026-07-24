@@ -23,14 +23,23 @@ var auto_move := true
 # stats
 var stats: Array[Dictionary]
 
+var survival_time := 0.0
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 	for i in num_players:
 		stats.append({
-			"jumps": 0
+			"jumps": 0,
+			"survived": true,
 		})
+
+	survival_time = 0.0
+
+
+func _process(delta: float) -> void:
+	survival_time += delta
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -45,5 +54,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func reset_stats() -> void:
 	for i in num_players:
 		stats[i] = {
-			"jumps": 0
+			"jumps": 0,
+			"survived": true,
 		}
+
+	survival_time = 0.0

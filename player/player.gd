@@ -28,7 +28,7 @@ func _ready():
 			var tween := create_tween()
 			tween.tween_property($Sprite, "scale", 2.0 * Vector2.ONE, 0.4)
 			tween.tween_property($Sprite, "scale", Vector2.ZERO, 0.2)
-			die()
+			die("You got killed by an enemy!")
 	)
 
 	if Global.auto_move:
@@ -68,7 +68,7 @@ func move():
 			# ... and you ran right into it
 			tween.tween_property(self, "position", direction * Global.tile_size, move_speed).as_relative()
 			tween.tween_property(self, "scale", Vector2.ZERO, move_speed)
-			die()
+			die("You fell to your death!")
 	else:
 		# next tile is a wall
 		direction = -1 * direction
@@ -92,6 +92,8 @@ func move():
 	is_moving = false
 
 
-func die():
+func die(reason: String):
 	is_dead = true
+	Global.stats[id-1].death_reason = reason
+	Global.stats[id-1].survival_time = Global.survival_time
 	SoundManager.play_sound(preload("res://player/sounds/hurt.wav"))
