@@ -70,9 +70,9 @@ func move():
 		# next tile is a gap...
 		if not Global.tilemap.is_blocked(position + 2 * direction * Global.tile_size):
 			# ... and can be jumped over
-			tween.tween_property(self, "position", 2 * direction * Global.tile_size, 2 * move_speed).as_relative()
-			tween.parallel().tween_property($Sprite, "scale", 2.0 * Vector2.ONE, move_speed)
-			tween.parallel().tween_property($Sprite, "scale", Vector2.ONE, move_speed).set_delay(move_speed)
+			tween.tween_property(self, "position", 2 * direction * Global.tile_size, 1.5 * move_speed).as_relative()
+			tween.parallel().tween_property($Sprite, "scale", 2.0 * Vector2.ONE, 0.75 * move_speed)
+			tween.parallel().tween_property($Sprite, "scale", Vector2.ONE, 0.75 * move_speed).set_delay(0.75 * move_speed)
 			SoundManager.play_sound(preload("res://player/sounds/jump.wav"))
 			Global.stats[id-1].jumps += 1
 		else:
