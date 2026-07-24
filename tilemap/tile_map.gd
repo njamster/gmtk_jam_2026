@@ -33,6 +33,7 @@ func _ready() -> void:
 
 	randomize_counters()
 
+	await get_tree().create_timer(1.0).timeout
 	earthquake()
 
 
@@ -64,7 +65,7 @@ func count_down_position(pos: Vector2) -> void:
 	count_down_cell(local_to_map(pos))
 
 
-func count_down_cell(cell: Vector2i) -> void:
+func count_down_cell(cell: Vector2i, play_sounds := true) -> void:
 	var tile_data = get_cell_atlas_coords(cell)
 	match tile_data:
 		DURABILITY_9:
@@ -85,7 +86,8 @@ func count_down_cell(cell: Vector2i) -> void:
 			set_cell(cell, 1, DURABILITY_1)
 		DURABILITY_1:
 			set_cell(cell, 1, GAP_TILE)
-			SoundManager.play_sound(preload("res://tilemap/sounds/crumble.wav"), true)
+			if play_sounds:
+				SoundManager.play_sound(preload("res://tilemap/sounds/crumble.wav"), true)
 
 
 func earthquake() -> void:
@@ -94,4 +96,5 @@ func earthquake() -> void:
 			var cell = Vector2i(x, y)
 			if get_cell_atlas_coords(cell) == WALL_TILE:
 				continue
-			count_down_cell(cell)
+			count_down_cell(cell, false)
+	SoundManager.play_sound(preload("res://tilemap/sounds/earthquake.wav"), true)
