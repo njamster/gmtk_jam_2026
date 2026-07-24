@@ -2,6 +2,8 @@ extends TileMapLayer
 
 const WALL_TILE := Vector2i(0, 0)
 
+const STURDY_FLOOR := Vector2i(4, 0)
+
 const GAP_TILE := Vector2i(0, 1)
 
 const DURABILITY_1 := Vector2i(1, 1)
@@ -41,7 +43,8 @@ func randomize_counters() -> void:
 	for x in range(3, 57):
 		for y in range(2, 32):
 			var cell = Vector2i(x, y)
-			if get_cell_atlas_coords(cell) == WALL_TILE:
+			if get_cell_atlas_coords(cell) == WALL_TILE or \
+			   get_cell_atlas_coords(cell) == STURDY_FLOOR:
 				continue
 			set_cell(cell, 1, atlas_coords[randi_range(1, 9)])
 
@@ -94,7 +97,8 @@ func earthquake() -> void:
 	for x in range(3, 57):
 		for y in range(2, 32):
 			var cell = Vector2i(x, y)
-			if get_cell_atlas_coords(cell) == WALL_TILE:
-				continue
+			if get_cell_atlas_coords(cell) == WALL_TILE or \
+			   get_cell_atlas_coords(cell) == STURDY_FLOOR:
+					continue
 			count_down_cell(cell, false)
 	SoundManager.play_sound(preload("res://tilemap/sounds/earthquake.wav"), true)
