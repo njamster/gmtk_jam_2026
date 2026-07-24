@@ -1,6 +1,6 @@
 extends Node
 
-var tilemap: TileMap
+var tilemap: TileMapLayer
 
 var tile_size := 32
 
