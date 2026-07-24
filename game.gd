@@ -5,6 +5,8 @@ var survival_time := 0.0
 
 
 func _ready() -> void:
+	Global.game_state_changed.emit(Global.GameState.RUNNING)
+
 	SoundManager.play_music(preload("res://music/background_music.ogg"), true, false)
 
 	for i in Global.num_players:

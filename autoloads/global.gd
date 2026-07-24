@@ -1,5 +1,14 @@
 extends Node
 
+enum GameState {
+	RUNNING,
+	PAUSED,
+	GAME_OVER
+}
+
+@warning_ignore("unused_signal")
+signal game_state_changed(state: GameState)
+
 var tilemap: TileMapLayer
 
 var tile_size := 32

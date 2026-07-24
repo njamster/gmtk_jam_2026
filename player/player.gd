@@ -80,6 +80,9 @@ func move():
 
 	await tween.finished
 
+	if is_dead:
+		Global.game_state_changed.emit(Global.GameState.GAME_OVER)
+
 	if Global.decay_enabled:
 		Global.tilemap.count_down_position(previous_position)
 
