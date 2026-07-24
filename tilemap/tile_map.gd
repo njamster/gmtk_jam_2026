@@ -110,3 +110,17 @@ func earthquake() -> void:
 			count_down_cell(cell, false)
 
 	SoundManager.play_sound(preload("res://tilemap/sounds/earthquake.wav"))
+
+
+func small_earthquake() -> void:
+	for x in range(3, 57):
+		for y in range(2, 32):
+			var cell = Vector2i(x, y)
+			if get_cell_atlas_coords(cell) == WALL_TILE or \
+			   get_cell_atlas_coords(cell) == STURDY_FLOOR:
+					continue
+
+			if randi_range(0, 3) == 0:
+				count_down_cell(cell, false)
+
+	SoundManager.play_sound(preload("res://tilemap/sounds/earthquake.wav"))

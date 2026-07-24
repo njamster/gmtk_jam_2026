@@ -20,3 +20,10 @@ func _ready() -> void:
 		var enemy := preload("res://enemies/enemy.tscn").instantiate()
 		enemy.global_position = $TileMap.map_to_local(Vector2i(randi_range(3, 56), randi_range(3, 31)))
 		add_child(enemy)
+
+
+func _process(delta: float) -> void:
+	$ProgressBar.value -= 15 * delta
+	if $ProgressBar.value == 0:
+		$TileMap.small_earthquake()
+		$ProgressBar.value = 100

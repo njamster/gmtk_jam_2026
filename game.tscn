@@ -33,6 +33,12 @@ size = Vector2(32, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(32, 64)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc0e3"]
+bg_color = Color(0.54509807, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feb5d"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="Game" type="Control" unique_id=1264650823]
 layout_mode = 3
 anchors_preset = 15
@@ -61,3 +67,18 @@ collision_mask = 2
 [node name="Hitbox" type="CollisionShape2D" parent="ExitArea" unique_id=558633952]
 position = Vector2(-16, 544)
 shape = SubResource("RectangleShape2D_feb5d")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1341837313]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -35.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_fc0e3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_feb5d")
+value = 100.0
+show_percentage = false
