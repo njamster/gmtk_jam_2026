@@ -31,8 +31,15 @@ func _ready():
 			die("You got killed by an enemy!")
 	)
 
-	area_entered.connect(func(_area):
-		die("")  # Looks funny, but this means you actually survived :D
+	area_entered.connect(func(area):
+		if area.is_in_group("Collectible"):
+			# It's a collectible
+			Global.stats[id-1].gold += 1
+			SoundManager.play_sound(preload("res://player/sounds/gold.wav"), -10)
+			area.queue_free()
+		else:
+			# It's the exit area
+			die("")  # Looks funny, but this means you actually survived :D
 	)
 
 	if Global.auto_move:

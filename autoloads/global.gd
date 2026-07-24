@@ -35,6 +35,7 @@ func _ready() -> void:
 		stats.append({
 			"survival_time": 0.0,
 			"jumps": 0,
+			"gold": 0,
 			"death_reason": "",
 		})
 
@@ -66,6 +67,7 @@ func reset_stats() -> void:
 		stats[i] = {
 			"survival_time": 0.0,
 			"jumps": 0,
+			"gold": 0,
 			"death_reason": "",
 		}
 

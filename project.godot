@@ -33,6 +33,10 @@ window/size/mode=4
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[global_group]
+
+Collectible=""
+
 [input]
 
 restart={
@@ -129,7 +133,7 @@ move_right_p2={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Walls"
-2d_physics/layer_5="Wall (Enemies Only)"
+2d_physics/layer_5="Collectibles"
 
 [physics]
 

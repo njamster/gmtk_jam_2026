@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bgkfng34eaobi"]
+
+[ext_resource type="Texture2D" uid="uid://ld8o73kaq5nm" path="res://player/images/player.png" id="1_5a00n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5a00n"]
+radius = 1.0
+
+[node name="Gold" type="Area2D" unique_id=1756101319 groups=["Collectible"]]
+collision_layer = 16
+collision_mask = 2
+monitoring = false
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1478879090]
+modulate = Color(1, 0.84313726, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_5a00n")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=265516910]
+shape = SubResource("CircleShape2D_5a00n")

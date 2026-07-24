@@ -36,6 +36,20 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "Yes"
 
+[node name="Gold" type="HBoxContainer" parent="Stats" unique_id=757544656]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Stats/Gold" unique_id=358934729]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Gold:"
+
+[node name="Value" type="Label" parent="Stats/Gold" unique_id=1968867458]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Yes"
+
 [node name="NumJumps" type="HBoxContainer" parent="Stats" unique_id=1551478125]
 unique_name_in_owner = true
 layout_mode = 2

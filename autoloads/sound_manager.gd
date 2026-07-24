@@ -29,16 +29,15 @@ func play_music(stream: AudioStream, loop := true, fade_over := true) -> void:
 		tween.tween_property(new_track, "volume_db", 0, 2.0)
 
 
-func play_sound(stream: AudioStream, randomize_pitch := false) -> void:
+func play_sound(stream: AudioStream, volume_change := 0, min_pitch := 1.0, max_pitch := 1.0) -> void:
 	if $Sounds.get_child_count() < MAX_SIMULTANEOUS_SOUNDS:
 		var player := AudioStreamPlayer.new()
 		player.stream = stream
 		player.bus = "Sounds"
+		player.volume_db = volume_change
+		player.pitch_scale = randf_range(min_pitch, max_pitch)
 		$Sounds.add_child(player)
 		player.play()
-
-		if randomize_pitch:
-			player.pitch_scale = randf_range(0.8, 1.2)
 
 		player.finished.connect(player.queue_free)
 	else:

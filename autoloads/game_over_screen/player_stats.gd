@@ -19,6 +19,8 @@ func _update_stats() -> void:
 	else:
 		$DeathReason.text = "You survived!"
 
+	%Gold/Value.text = str(Global.stats[player_id].gold)
+
 	%SurvivalTime/Value.text = "%02d:%02d" % [
 		Global.stats[player_id].survival_time / 60,
 		fmod(Global.stats[player_id].survival_time, 60)
