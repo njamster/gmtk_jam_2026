@@ -12,6 +12,10 @@ signal game_state_changed(state: GameState)
 var game_state := GameState.MAIN_MENU:
 	set(value):
 		game_state = value
+		if game_state == GameState.RUNNING:
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		game_state_changed.emit(value)
 
 var tilemap: TileMapLayer
@@ -35,8 +39,6 @@ var survival_time := 0.0
 
 
 func _ready() -> void:
-	#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-
 	if OS.get_name() == "web":
 		var event = InputEventKey.new()
 		event.physical_keycode = KEY_ESCAPE
