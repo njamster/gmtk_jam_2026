@@ -47,6 +47,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Resume"
 
+[node name="Restart" type="Button" parent="VBox/Buttons" unique_id=1927174153]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Restart"
+
 [node name="QuitToMenu" type="Button" parent="VBox/Buttons" unique_id=1120991008]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2

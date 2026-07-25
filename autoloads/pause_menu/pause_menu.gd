@@ -7,6 +7,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	%Buttons/Resume.pressed.connect(_resume)
+	%Buttons/Restart.pressed.connect(_restart)
 	%Buttons/QuitToMenu.pressed.connect(_quit_to_menu)
 
 	if OS.get_name() == "web":
@@ -34,6 +35,11 @@ func _on_visibility_changed() -> void:
 
 
 func _resume() -> void:
+	hide()
+
+
+func _restart() -> void:
+	get_tree().reload_current_scene()
 	hide()
 
 
