@@ -12,8 +12,12 @@ func _ready() -> void:
 		%Buttons/QuitGame.pressed.connect(_quit)
 
 	# make button focus wrap around at the ends of the button list
-	%Buttons.get_child(0).focus_neighbor_top = %Buttons.get_child(-1).get_path()
-	%Buttons.get_child(-1).focus_neighbor_bottom = %Buttons.get_child(0).get_path()
+	if %Buttons is VBoxContainer:
+		%Buttons.get_child(0).focus_neighbor_top = %Buttons.get_child(-1).get_path()
+		%Buttons.get_child(-1).focus_neighbor_bottom = %Buttons.get_child(0).get_path()
+	elif %Buttons is HBoxContainer:
+		%Buttons.get_child(0).focus_neighbor_left = %Buttons.get_child(-1).get_path()
+		%Buttons.get_child(-1).focus_neighbor_right = %Buttons.get_child(0).get_path()
 
 	%Buttons/Play.grab_focus()
 
