@@ -6,7 +6,7 @@ func _ready() -> void:
 
 	Global.game_state = Global.GameState.RUNNING
 
-	SoundManager.play_music(preload("res://music/background_music.ogg"), true, false)
+	AudioManager.play_music(preload("res://music/background_music.ogg"), true, false)
 
 	for i in Global.num_players:
 		var player := preload("res://player/player.tscn").instantiate()

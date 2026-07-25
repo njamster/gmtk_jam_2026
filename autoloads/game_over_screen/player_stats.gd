@@ -9,7 +9,6 @@ func _ready() -> void:
 
 
 func update() -> void:
-	print("Test", player_id)
 	if Global.stats[player_id].death_reason:
 		$DeathReason.text = Global.stats[player_id].death_reason
 	else:

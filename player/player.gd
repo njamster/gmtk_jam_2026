@@ -35,7 +35,7 @@ func _ready():
 		if area.is_in_group("Collectible"):
 			# It's a collectible
 			Global.stats[id-1].gold += 1
-			SoundManager.play_sound(preload("res://player/sounds/gold.wav"), -10)
+			AudioManager.play_sound(preload("res://player/sounds/gold.wav"), -10)
 			area.queue_free()
 		else:
 			# It's the exit area
@@ -73,12 +73,13 @@ func move():
 			tween.tween_property(self, "position", 2 * direction * Global.tile_size, 1.5 * move_speed).as_relative()
 			tween.parallel().tween_property($Sprite, "scale", 2.0 * Vector2.ONE, 0.75 * move_speed)
 			tween.parallel().tween_property($Sprite, "scale", Vector2.ONE, 0.75 * move_speed).set_delay(0.75 * move_speed)
-			SoundManager.play_sound(preload("res://player/sounds/jump.wav"))
+			AudioManager.play_sound(preload("res://player/sounds/jump.wav"))
 			Global.stats[id-1].jumps += 1
 		else:
 			# ... and you ran right into it
 			tween.tween_property(self, "position", direction * Global.tile_size, move_speed).as_relative()
 			tween.tween_property(self, "scale", Vector2.ZERO, move_speed)
+			AudioManager.play_sound(preload("res://player/sounds/wilhelm_scream.ogg"))
 			die("You fell to your death!")
 	else:
 		# next tile is a wall
@@ -108,4 +109,4 @@ func die(reason: String):
 	Global.num_alive_players -= 1
 	Global.stats[id-1].death_reason = reason
 	Global.stats[id-1].survival_time = Global.survival_time
-	SoundManager.play_sound(preload("res://player/sounds/hurt.wav"))
+	AudioManager.play_sound(preload("res://player/sounds/hurt.wav"))

@@ -104,7 +104,7 @@ func count_down_cell(cell: Vector2i, play_sounds := true) -> void:
 		DURABILITY_1:
 			set_cell(cell, 0, GAP_TILE)
 			if play_sounds:
-				SoundManager.play_sound(preload("res://tilemap/sounds/crumble.wav"))
+				AudioManager.play_sound(preload("res://tilemap/sounds/crumble.wav"))
 
 
 func earthquake() -> void:
@@ -117,12 +117,12 @@ func earthquake() -> void:
 					continue
 			count_down_cell(cell, false)
 
-	SoundManager.play_sound(preload("res://tilemap/sounds/earthquake.wav"))
+	AudioManager.play_sound(preload("res://tilemap/sounds/earthquake.wav"))
 	Global.camera.screenshake(0.45)
 
 
 func small_earthquake() -> void:
-	SoundManager.play_sound(preload("res://tilemap/sounds/earthquake.wav"))
+	AudioManager.play_sound(preload("res://tilemap/sounds/earthquake.wav"))
 
 	var tiles := []
 	for i in range(1, MAX_DURABILITY + 1):

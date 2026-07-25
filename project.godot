@@ -22,7 +22,7 @@ buses/default_bus_layout="uid://tjp47my4mw87"
 [autoload]
 
 Global="*uid://drjwpt7fml0y5"
-SoundManager="*uid://db6kfcsms4ikv"
+AudioManager="*uid://db6kfcsms4ikv"
 PauseMenu="*uid://dkluqakueg6il"
 GameOverScreen="*uid://c0vtm51aki77x"
 
