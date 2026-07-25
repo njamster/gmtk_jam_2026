@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="GMTK Jam (2026)"
+config/name="Oromoto"
 run/main_scene="uid://dyniakbkfydup"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dyniakbkfydup"]
 
 [ext_resource type="Script" uid="uid://chy4gbnq4eqfx" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="FontFile" uid="uid://bg24nlobtsxt" path="res://fonts/caesar_dressing/CaesarDressing-Regular.ttf" id="2_7vrkn"]
 
 [node name="MainMenu" type="Control" unique_id=2027714392]
 layout_mode = 3
@@ -36,8 +37,10 @@ theme_override_constants/margin_bottom = 32
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 128
-text = "GraveRobber"
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 196
+text = "<Game Title>"
 
 [node name="Buttons" type="HBoxContainer" parent="OuterMargin" unique_id=395712404]
 unique_name_in_owner = true
