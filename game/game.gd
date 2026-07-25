@@ -27,12 +27,7 @@ func _ready() -> void:
 		)
 		add_child(enemy)
 
-
-func _process(delta: float) -> void:
-	$ProgressBar.value -= 15 * delta
-	if $ProgressBar.value == 0:
-		$TileMap.small_earthquake()
-		$ProgressBar.value = 100
+	$QuakeTimer.timeout.connect($TileMap.small_earthquake)
 
 
 func _unhandled_input(event: InputEvent) -> void:
