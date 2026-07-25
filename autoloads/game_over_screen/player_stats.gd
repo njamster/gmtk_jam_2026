@@ -7,13 +7,8 @@ var player_id := -1
 func _ready() -> void:
 	$Player.text = "Player %d" % [player_id + 1]
 
-	visibility_changed.connect(func():
-		if visible:
-			_update_stats()
-	)
 
-
-func _update_stats() -> void:
+func update() -> void:
 	if Global.stats[player_id].death_reason:
 		$DeathReason.text = Global.stats[player_id].death_reason
 	else:
