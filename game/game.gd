@@ -2,6 +2,8 @@ extends Control
 
 
 func _ready() -> void:
+	Global.num_alive_players = Global.num_players
+
 	Global.game_state_changed.emit(Global.GameState.RUNNING)
 
 	SoundManager.play_music(preload("res://music/background_music.ogg"), true, false)
