@@ -1,18 +1,25 @@
-[gd_scene format=3 uid="uid://dd18y2nyn0nyc"]
+[gd_scene format=3 uid="uid://chdpljrgguem5"]
 
-[ext_resource type="Script" uid="uid://b4tnwafuawbw7" path="res://settings/audio_setting.gd" id="1_djrvl"]
+[ext_resource type="Script" uid="uid://bsh37iitsvynl" path="res://settings/range_setting.gd" id="1_ht8mc"]
 
-[node name="AudioSetting" type="HBoxContainer" unique_id=1009214696]
+[node name="RangeSetting" type="BoxContainer" unique_id=1013008450]
+offset_right = 217.0
+offset_bottom = 55.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
-script = ExtResource("1_djrvl")
+script = ExtResource("1_ht8mc")
 
 [node name="Label" type="Label" parent="." unique_id=740803828]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
 
-[node name="Decrease" type="Button" parent="." unique_id=576773243]
+[node name="HBox" type="HBoxContainer" parent="." unique_id=1780616122]
+layout_mode = 2
+alignment = 1
+
+[node name="Decrease" type="Button" parent="HBox" unique_id=576773243]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
@@ -20,13 +27,14 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 32
 text = "-"
 
-[node name="Value" type="Label" parent="." unique_id=1712739424]
+[node name="Value" type="Label" parent="HBox" unique_id=1712739424]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 
-[node name="Increase" type="Button" parent="." unique_id=1412559615]
+[node name="Increase" type="Button" parent="HBox" unique_id=1412559615]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2

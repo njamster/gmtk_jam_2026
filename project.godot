@@ -21,6 +21,7 @@ buses/default_bus_layout="uid://tjp47my4mw87"
 
 [autoload]
 
+Settings="*uid://l4fviqkswnf6"
 Global="*uid://drjwpt7fml0y5"
 AudioManager="*uid://db6kfcsms4ikv"
 PauseMenu="*uid://dkluqakueg6il"

@@ -18,7 +18,7 @@ func screenshake(amount):
 
 func _process(delta):
 	if trauma:
-		trauma = max(trauma - decay * delta, 0)
+		trauma = max(trauma - decay * delta, 0) * (Settings.accessibility.screenshake_intensity.value / 100.0)
 		_shake()
 
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dlb18ix6exq3t"]
 
 [ext_resource type="Script" uid="uid://dpujtpm423xx3" path="res://settings/settings.gd" id="1_iirne"]
+[ext_resource type="PackedScene" uid="uid://chdpljrgguem5" path="res://settings/range_setting.tscn" id="2_i854f"]
 
 [node name="Settings" type="Control" unique_id=810074774]
 layout_mode = 3
@@ -39,22 +40,73 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 128
 text = "Settings"
 
-[node name="Settings" type="VBoxContainer" parent="OuterMargin" unique_id=2001935208]
+[node name="Categories" type="VBoxContainer" parent="OuterMargin" unique_id=2073288236]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="Audio" type="VBoxContainer" parent="OuterMargin/Categories" unique_id=2001935208]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Audio" type="Label" parent="OuterMargin/Settings" unique_id=2037750698]
+[node name="Title" type="Label" parent="OuterMargin/Categories/Audio" unique_id=2037750698]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Audio"
+text = "Volume"
 horizontal_alignment = 1
 
-[node name="AudioSettings" type="VBoxContainer" parent="OuterMargin/Settings" unique_id=1455047535]
-unique_name_in_owner = true
+[node name="Settings" type="VBoxContainer" parent="OuterMargin/Categories/Audio" unique_id=1455047535]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="Master" parent="OuterMargin/Categories/Audio/Settings" unique_id=1013008450 instance=ExtResource("2_i854f")]
+unique_name_in_owner = true
+layout_mode = 2
+vertical = true
+label = "Overall"
+key = "master"
+
+[node name="Music" parent="OuterMargin/Categories/Audio/Settings" unique_id=1912418172 instance=ExtResource("2_i854f")]
+unique_name_in_owner = true
+layout_mode = 2
+vertical = true
+label = "Music"
+key = "music"
+
+[node name="SFX" parent="OuterMargin/Categories/Audio/Settings" unique_id=16741608 instance=ExtResource("2_i854f")]
+unique_name_in_owner = true
+layout_mode = 2
+vertical = true
+label = "Sounds"
+key = "sfx"
+
+[node name="Accessibility" type="VBoxContainer" parent="OuterMargin/Categories" unique_id=1058460432]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="OuterMargin/Categories/Accessibility" unique_id=561510723]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Accessibility"
+horizontal_alignment = 1
+
+[node name="Settings" type="VBoxContainer" parent="OuterMargin/Categories/Accessibility" unique_id=1993213546]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="Screenshake" parent="OuterMargin/Categories/Accessibility/Settings" unique_id=1009214696 instance=ExtResource("2_i854f")]
+unique_name_in_owner = true
+layout_mode = 2
+vertical = true
+label = "Screenshake Intensity"
+key = "screenshake_intensity"
 
 [node name="Back" type="Button" parent="OuterMargin" unique_id=635150240]
 unique_name_in_owner = true

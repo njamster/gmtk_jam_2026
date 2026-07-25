@@ -1,8 +1,7 @@
 extends Node
 
-const SETTINGS_PATH := "user://settings.cfg"
-
-const DEFAULT_BUS_VOLUME := 80  # percent
+const MIN_INT := pow(-2, 63)
+const MAX_INT := pow(+2, 63) - 1
 
 enum GameState {
 	MAIN_MENU,
@@ -48,8 +47,6 @@ func _ready() -> void:
 		event.physical_keycode = KEY_ESCAPE
 		InputMap.action_erase_event("pause_game", event)
 
-	_load_settings()
-
 	for i in num_players:
 		stats.append({
 			"survival_time": 0.0,
@@ -59,26 +56,6 @@ func _ready() -> void:
 		})
 
 	survival_time = 0.0
-
-
-func _load_settings() -> void:
-	var settings_file = ConfigFile.new()
-	var error := settings_file.load(SETTINGS_PATH)
-
-	if error:
-		for i in AudioServer.bus_count:
-			AudioServer.set_bus_volume_linear(i, DEFAULT_BUS_VOLUME / 100.0)
-		return  # early
-
-	for i in AudioServer.bus_count:
-		AudioServer.set_bus_volume_linear(
-			i,
-			clampf(
-				settings_file.get_value("Audio", AudioServer.get_bus_name(i), DEFAULT_BUS_VOLUME / 100.0),
-				0.0,
-				1.0
-			)
-		)
 
 
 func _process(delta: float) -> void:
