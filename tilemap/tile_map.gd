@@ -16,6 +16,8 @@ const DURABILITY_7 := Vector2i(2, 2)
 const DURABILITY_8 := Vector2i(3, 2)
 const DURABILITY_9 := Vector2i(4, 2)
 
+const MAX_DURABILITY := 5
+
 const atlas_coords := [
 	GAP_TILE,
 	DURABILITY_1,
@@ -53,12 +55,12 @@ func randomize_counters() -> void:
 			   get_cell_atlas_coords(cell) == GAP_TILE or \
 			   get_cell_atlas_coords(cell) == STURDY_FLOOR:
 				continue
-			set_cell(cell, 0, atlas_coords[randi_range(1, 9)])
+			set_cell(cell, 0, atlas_coords[randi_range(1, MAX_DURABILITY)])
 
-			if randi_range(1, 5) == 1:
-				var gold := preload("res://collectibles/gold.tscn").instantiate()
-				gold.global_position = map_to_local(cell)
-				add_child(gold)
+			#if randi_range(1, 5) == 1:
+				#var gold := preload("res://collectibles/gold.tscn").instantiate()
+				#gold.global_position = map_to_local(cell)
+				#add_child(gold)
 
 
 func is_blocked(pos: Vector2) -> bool:
@@ -120,16 +122,24 @@ func earthquake() -> void:
 
 
 func small_earthquake() -> void:
-	for x in range(MIN_X, MAX_X):
-		for y in range(MIN_Y, MAX_Y):
-			var cell = Vector2i(x, y)
-			if get_cell_atlas_coords(cell) == WALL_TILE or \
-			   get_cell_atlas_coords(cell) == GAP_TILE or \
-			   get_cell_atlas_coords(cell) == STURDY_FLOOR:
-					continue
-
-			if randi_range(0, 3) == 0:
-				count_down_cell(cell, false)
-
 	SoundManager.play_sound(preload("res://tilemap/sounds/earthquake.wav"))
-	Global.camera.screenshake(0.35)
+
+	var tiles := []
+	for i in range(1, MAX_DURABILITY + 1):
+		tiles.append([] + get_used_cells_by_id(0, atlas_coords[i]))
+
+	const TILES_CHANGED_PER_LAYER := 10
+
+	for i in range(TILES_CHANGED_PER_LAYER):
+		var tiles_count_down := false
+		for j in range(MAX_DURABILITY):
+			if tiles[j].size():
+				var random_tile_id = randi() % tiles[j].size()
+				var cell = tiles[j].pop_at(random_tile_id)
+				count_down_cell(cell)
+				tiles_count_down = true
+		if tiles_count_down:
+			Global.camera.screenshake(0.08)
+			await get_tree().create_timer(0.05).timeout
+		else:
+			break

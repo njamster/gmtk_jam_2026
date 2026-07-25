@@ -1,6 +1,6 @@
 extends Node
 
-const MAX_SIMULTANEOUS_SOUNDS := 10
+const MAX_SIMULTANEOUS_SOUNDS := 15
 
 
 func play_music(stream: AudioStream, loop := true, fade_over := true) -> void:
