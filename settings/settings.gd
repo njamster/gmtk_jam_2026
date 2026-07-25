@@ -21,4 +21,4 @@ func _store_settings() -> void:
 	var settings_file = ConfigFile.new()
 	for setting in %AudioSettings.get_children():
 		settings_file.set_value("Audio", setting.bus_name, setting.volume)
-	settings_file.save("user://settings.cfg")
+	settings_file.save(Global.SETTINGS_PATH)

@@ -8,7 +8,7 @@ const STEP_SIZE := 0.1
 var volume: float:
 	set(value):
 		volume = value
-		$Value.text = str(roundi(value * 100))
+		$Value.text = str(roundi(value * 100)) + "%"
 
 
 func _ready() -> void:

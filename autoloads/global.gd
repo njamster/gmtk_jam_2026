@@ -1,5 +1,9 @@
 extends Node
 
+const SETTINGS_PATH := "user://settings.cfg"
+
+const DEFAULT_BUS_VOLUME := 80  # percent
+
 enum GameState {
 	MAIN_MENU,
 	RUNNING,
@@ -59,16 +63,18 @@ func _ready() -> void:
 
 func _load_settings() -> void:
 	var settings_file = ConfigFile.new()
-	var error := settings_file.load("user://settings.cfg")
+	var error := settings_file.load(SETTINGS_PATH)
 
 	if error:
+		for i in AudioServer.bus_count:
+			AudioServer.set_bus_volume_linear(i, DEFAULT_BUS_VOLUME / 100.0)
 		return  # early
 
 	for i in AudioServer.bus_count:
 		AudioServer.set_bus_volume_linear(
 			i,
 			clampf(
-				settings_file.get_value("Audio", AudioServer.get_bus_name(i), 1.0),
+				settings_file.get_value("Audio", AudioServer.get_bus_name(i), DEFAULT_BUS_VOLUME / 100.0),
 				0.0,
 				1.0
 			)
