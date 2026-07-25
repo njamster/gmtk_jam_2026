@@ -1,6 +1,6 @@
 extends Area2D
 
-var id: int
+var id := 1
 
 var inputs = {
 	"move_up": Vector2.UP,
