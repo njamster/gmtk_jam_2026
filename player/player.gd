@@ -49,7 +49,7 @@ func _ready():
 func _unhandled_input(event):
 	for dir in inputs.keys():
 		var action = dir
-		if id:
+		if Global.num_players > 1:
 			action = "%s_p%d" % [dir, id]
 		if event.is_action_pressed(action):
 			direction = inputs[dir]
