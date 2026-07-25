@@ -31,6 +31,8 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("paused"):
-		if Global.game_state == Global.GameState.RUNNING:
+	if Global.game_state == Global.GameState.RUNNING:
+		if event.is_action_pressed("quick_restart"):
+			get_tree().reload_current_scene()
+		elif event.is_action_pressed("paused"):
 			Global.game_state = Global.GameState.PAUSED
