@@ -34,5 +34,5 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Global.game_state == Global.GameState.RUNNING:
 		if event.is_action_pressed("quick_restart"):
 			get_tree().reload_current_scene()
-		elif event.is_action_pressed("paused"):
+		elif event.is_action_pressed("pause_game"):
 			Global.game_state = Global.GameState.PAUSED
