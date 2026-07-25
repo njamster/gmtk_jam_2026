@@ -92,7 +92,7 @@ func move():
 	await tween.finished
 
 	if is_dead and Global.num_alive_players == 0:
-		Global.game_state_changed.emit(Global.GameState.GAME_OVER)
+		Global.game_state = Global.GameState.GAME_OVER
 
 	if Global.decay_enabled:
 		Global.tilemap.count_down_position(previous_position)

@@ -23,31 +23,32 @@ func _ready() -> void:
 		%Buttons.get_child(0).focus_neighbor_left = %Buttons.get_child(-1).get_path()
 		%Buttons.get_child(-1).focus_neighbor_right = %Buttons.get_child(0).get_path()
 
-	visibility_changed.connect(_on_visibility_changed)
+	Global.game_state_changed.connect(_on_game_state_changed)
 
 
-func _on_visibility_changed() -> void:
-	if visible:
+func _on_game_state_changed(state: Global.GameState) -> void:
+	if state == Global.GameState.PAUSED:
+		show()
 		%Buttons.get_child(0).grab_focus()
 		get_tree().paused = true
 	else:
+		hide()
 		get_tree().paused = false
 
 
 func _resume() -> void:
-	hide()
+	Global.game_state = Global.GameState.RUNNING
 
 
 func _restart() -> void:
 	get_tree().reload_current_scene()
-	hide()
+	Global.game_state = Global.GameState.RUNNING
 
 
 func _quit_to_menu():
 	get_tree().change_scene_to_file("res://main_menu.tscn")
-	hide()
+	Global.game_state = Global.GameState.MAIN_MENU
 
 
 func _quit_game() -> void:
 	get_tree().quit()
-	hide()

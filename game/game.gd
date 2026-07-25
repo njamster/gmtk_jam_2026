@@ -4,7 +4,7 @@ extends Control
 func _ready() -> void:
 	Global.num_alive_players = Global.num_players
 
-	Global.game_state_changed.emit(Global.GameState.RUNNING)
+	Global.game_state = Global.GameState.RUNNING
 
 	SoundManager.play_music(preload("res://music/background_music.ogg"), true, false)
 
@@ -37,5 +37,5 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("paused"):
-		if not PauseMenu.visible:
-			PauseMenu.show()
+		if Global.game_state == Global.GameState.RUNNING:
+			Global.game_state = Global.GameState.PAUSED

@@ -1,13 +1,18 @@
 extends Node
 
 enum GameState {
+	MAIN_MENU,
 	RUNNING,
 	PAUSED,
 	GAME_OVER
 }
 
-@warning_ignore("unused_signal")
 signal game_state_changed(state: GameState)
+
+var game_state := GameState.MAIN_MENU:
+	set(value):
+		game_state = value
+		game_state_changed.emit(value)
 
 var tilemap: TileMapLayer
 var camera: Camera2D

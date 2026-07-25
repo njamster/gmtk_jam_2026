@@ -2,6 +2,8 @@ extends Control
 
 
 func _ready() -> void:
+	Global.game_state = Global.GameState.MAIN_MENU
+
 	%Buttons/Singleplayer.pressed.connect(_singleplayer)
 	%Buttons/Multiplayer.pressed.connect(_multiplayer)
 	%Buttons/Settings.pressed.connect(_settings)
