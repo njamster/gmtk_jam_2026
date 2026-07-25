@@ -31,3 +31,9 @@ func _process(delta: float) -> void:
 	if $ProgressBar.value == 0:
 		$TileMap.small_earthquake()
 		$ProgressBar.value = 100
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("paused"):
+		if not PauseMenu.visible:
+			PauseMenu.show()

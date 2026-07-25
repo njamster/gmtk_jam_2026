@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dkluqakueg6il"]
+
+[ext_resource type="Script" uid="uid://b0vvf43d6bqtd" path="res://autoloads/pause_menu/pause_menu.gd" id="1_eu6kb"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=256486035]
+script = ExtResource("1_eu6kb")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1008625854]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7058824)
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1197679932]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -572.0
+offset_top = -116.0
+offset_right = 572.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="VBox" unique_id=108237656]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 128
+text = "Paused"
+
+[node name="Buttons" type="VBoxContainer" parent="VBox" unique_id=949206601]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 48
+
+[node name="Resume" type="Button" parent="VBox/Buttons" unique_id=304431747]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+
+[node name="QuitToMenu" type="Button" parent="VBox/Buttons" unique_id=1120991008]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit to Menu"
+
+[node name="QuitGame" type="Button" parent="VBox/Buttons" unique_id=741245560]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit Game"

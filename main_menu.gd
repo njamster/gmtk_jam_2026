@@ -19,7 +19,7 @@ func _ready() -> void:
 		%Buttons.get_child(0).focus_neighbor_left = %Buttons.get_child(-1).get_path()
 		%Buttons.get_child(-1).focus_neighbor_right = %Buttons.get_child(0).get_path()
 
-	%Buttons/Play.grab_focus()
+	%Buttons.get_child(0).grab_focus()
 
 
 func _play() -> void:
