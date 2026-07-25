@@ -2,7 +2,8 @@ extends Control
 
 
 func _ready() -> void:
-	%Buttons/Play.pressed.connect(_play)
+	%Buttons/Singleplayer.pressed.connect(_singleplayer)
+	%Buttons/Multiplayer.pressed.connect(_multiplayer)
 	%Buttons/Settings.pressed.connect(_settings)
 	%Buttons/Credits.pressed.connect(_credits)
 
@@ -22,7 +23,13 @@ func _ready() -> void:
 	%Buttons.get_child(0).grab_focus()
 
 
-func _play() -> void:
+func _singleplayer() -> void:
+	Global.num_players = 1
+	get_tree().change_scene_to_file("res://game/game.tscn")
+
+
+func _multiplayer() -> void:
+	Global.num_players = 2
 	get_tree().change_scene_to_file("res://game/game.tscn")
 
 
