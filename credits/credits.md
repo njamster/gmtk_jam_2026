@@ -10,3 +10,6 @@ vacuumbeef
 
 # Art Assets
 oktoberbeef
+
+# "Art" Assets
+njamster
