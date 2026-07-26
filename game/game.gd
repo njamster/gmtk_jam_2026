@@ -11,7 +11,8 @@ func _ready() -> void:
 		enemy.global_position = $TileMap.map_to_local(
 			Vector2i(
 				randi_range(3, $TileMap.MAX_X),
-				randi_range(3, $TileMap.MAX_Y))
+				randi_range(3, $TileMap.MAX_Y)
+			)
 		)
 		add_child(enemy)
 

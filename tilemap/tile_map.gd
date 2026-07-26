@@ -39,7 +39,7 @@ const TILE_ROTATIONS = [
 ]
 
 const MIN_X := 1
-const MAX_X := 39
+const MAX_X := 38
 const MIN_Y := 1
 const MAX_Y := 21
 
@@ -55,8 +55,8 @@ func _ready() -> void:
 
 
 func randomize_counters() -> void:
-	for x in range(MIN_X, MAX_X):
-		for y in range(MIN_Y, MAX_Y):
+	for x in range(MIN_X, MAX_X + 1):
+		for y in range(MIN_Y, MAX_Y +1 ):
 			var cell = Vector2i(x, y)
 			if get_cell_atlas_coords(cell) == WALL_TILE or \
 			   get_cell_atlas_coords(cell) == GAP_TILE or \
@@ -115,8 +115,8 @@ func count_down_cell(cell: Vector2i, play_sounds := true) -> void:
 
 
 func earthquake() -> void:
-	for x in range(MIN_X, MAX_X):
-		for y in range(MIN_Y, MAX_Y):
+	for x in range(MIN_X, MAX_X + 1):
+		for y in range(MIN_Y, MAX_Y + 1):
 			var cell = Vector2i(x, y)
 			if get_cell_atlas_coords(cell) == WALL_TILE or \
 			   get_cell_atlas_coords(cell) == GAP_TILE or \
