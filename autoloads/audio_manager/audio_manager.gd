@@ -13,15 +13,14 @@ func play_music(stream: AudioStream, crossfade := true, loop := true) -> void:
 	var old_track_playing := $Music.get_child_count() > 0
 
 	if old_track_playing:
-		var old_track := $Music.get_child(0)
+		var old_track := $Music.get_child(-1)
 
 		if old_track.stream == stream:
 			return  # early
 
 		if crossfade:
-			$Music.remove_child(old_track)
 			var tween := get_tree().create_tween()
-			tween.tween_property(old_track, "volume_db", -80, CROSSFADE_TIME)
+			tween.tween_property(old_track, "volume_db", -80, CROSSFADE_TIME).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 			tween.finished.connect(old_track.queue_free)
 		else:
 			old_track.queue_free()
@@ -37,7 +36,7 @@ func play_music(stream: AudioStream, crossfade := true, loop := true) -> void:
 	if old_track_playing and crossfade:
 		new_track.volume_db = -80
 		var tween := get_tree().create_tween()
-		tween.tween_property(new_track, "volume_db", 0, CROSSFADE_TIME)
+		tween.tween_property(new_track, "volume_db", 0, CROSSFADE_TIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 
 
 func play_sound(stream: AudioStream, bus_name := "Sounds", volume_change := 0, min_pitch := 1.0, max_pitch := 1.0) -> void:
