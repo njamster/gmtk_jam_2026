@@ -7,3 +7,6 @@ vacuumbeef
 
 # Music
 vacuumbeef
+
+# Art Assets
+oktoberbeef
