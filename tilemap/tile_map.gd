@@ -44,6 +44,9 @@ const MIN_Y := 1
 const MAX_Y := 21
 
 
+var free_cells := []
+var gold_cells :=  {}
+
 func _ready() -> void:
 	Global.tilemap = self
 	Global.tile_size = tile_set.tile_size.x
@@ -52,6 +55,9 @@ func _ready() -> void:
 
 	await get_tree().create_timer(1.0).timeout
 	earthquake()
+
+	await get_tree().create_timer(0.5).timeout
+	spawn_gold(40)
 
 
 func randomize_counters() -> void:
@@ -63,11 +69,23 @@ func randomize_counters() -> void:
 			   get_cell_atlas_coords(cell) == STURDY_FLOOR:
 				continue
 			set_cell(cell, 0, atlas_coords[randi_range(1, MAX_DURABILITY)], TILE_ROTATIONS[randi_range(0, 3)])
+			free_cells.append(cell)
 
-			#if randi_range(1, 5) == 1:
-				#var gold := preload("res://collectibles/gold.tscn").instantiate()
-				#gold.global_position = map_to_local(cell)
-				#add_child(gold)
+
+func spawn_gold(amount: int) -> void:
+	if amount <= 1:
+		push_warning("Cannot spawn negative amounts of gold!")
+		return  # early
+
+	for i in range(amount):
+		var cell = free_cells.pop_at(randi() % free_cells.size())
+		var gold := preload("res://collectibles/gold/gold.tscn").instantiate()
+		gold.global_position = map_to_local(cell)
+		add_child(gold)
+		gold.spawn()
+
+		gold_cells[cell] = gold
+		await get_tree().create_timer(0.02).timeout
 
 
 func is_blocked(pos: Vector2) -> bool:
@@ -110,6 +128,11 @@ func count_down_cell(cell: Vector2i, play_sounds := true) -> void:
 			set_cell(cell, 0, DURABILITY_1, get_cell_alternative_tile(cell))
 		DURABILITY_1:
 			set_cell(cell, 0, GAP_TILE, get_cell_alternative_tile(cell))
+			free_cells.erase(cell)
+			if cell in gold_cells:
+				if is_instance_valid(gold_cells[cell]):
+					gold_cells[cell].drop_down()
+				gold_cells.erase(cell)
 			if play_sounds:
 				AudioManager.play_sound(preload("res://tilemap/sounds/crumble.wav"))
 
@@ -150,3 +173,5 @@ func small_earthquake() -> void:
 			await get_tree().create_timer(0.05).timeout
 		else:
 			break
+
+	spawn_gold(6)

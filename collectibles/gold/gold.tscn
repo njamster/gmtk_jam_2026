@@ -1,22 +1,21 @@
 [gd_scene format=3 uid="uid://bgkfng34eaobi"]
 
-[ext_resource type="Texture2D" uid="uid://ld8o73kaq5nm" path="res://player/images/player.png" id="1_5a00n"]
-[ext_resource type="Script" uid="uid://gymbv22a1ms" path="res://collectibles/gold.gd" id="1_q6e11"]
+[ext_resource type="Script" uid="uid://gymbv22a1ms" path="res://collectibles/gold/gold.gd" id="1_0ekl1"]
+[ext_resource type="Texture2D" uid="uid://bvk0il86gp5nf" path="res://collectibles/gold/images/gold.png" id="2_av17k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5a00n"]
 radius = 1.0
 
 [node name="Gold" type="Area2D" unique_id=1756101319]
-scale = Vector2(1.8, 1.8)
 collision_layer = 16
 collision_mask = 2
 monitoring = false
-script = ExtResource("1_q6e11")
+script = ExtResource("1_0ekl1")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1478879090]
 modulate = Color(1, 0.84313726, 0, 1)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_5a00n")
+texture = ExtResource("2_av17k")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=265516910]
 shape = SubResource("CircleShape2D_5a00n")
