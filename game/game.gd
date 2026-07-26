@@ -2,21 +2,9 @@ extends Control
 
 
 func _ready() -> void:
-	Global.num_alive_players = Global.num_players
-
 	Global.game_state = Global.GameState.RUNNING
 
 	AudioManager.play_music(preload("res://music/background_music.ogg"), true, false)
-
-	for i in Global.num_players:
-		var player := preload("res://player/player.tscn").instantiate()
-		if Global.num_players > 1:
-			player.id = i + 1
-		if player.id == 1:
-			player.global_position = $TileMap.map_to_local(Vector2i(0, 10)) + $TileMap.position
-		else:
-			player.global_position = $TileMap.map_to_local(Vector2i(0, 11)) + $TileMap.position
-		add_child(player)
 
 	for i in Global.num_enemies:
 		var enemy := preload("res://enemies/enemy.tscn").instantiate()

@@ -11,10 +11,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_is7g6")
 
-[node name="Player" type="Label" parent="." unique_id=1899249669]
-layout_mode = 2
-horizontal_alignment = 1
-
 [node name="DeathReason" type="Label" parent="." unique_id=1934696774]
 layout_mode = 2
 horizontal_alignment = 1

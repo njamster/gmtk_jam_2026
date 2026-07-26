@@ -26,17 +26,18 @@ var camera: Camera2D
 
 var tile_size
 
-var num_players := 2
 var num_enemies := 0
-
-var num_alive_players := num_players
 
 # cheat codes :D
 var decay_enabled := true
 var auto_move := true
 
-# stats
-var stats: Array[Dictionary]
+var stats := {
+	"survival_time": 0.0,
+	"jumps": 0,
+	"gold": 0,
+	"death_reason": "",
+}
 
 var survival_time := 0.0
 
@@ -46,14 +47,6 @@ func _ready() -> void:
 		var event = InputEventKey.new()
 		event.physical_keycode = KEY_ESCAPE
 		InputMap.action_erase_event("pause_game", event)
-
-	for i in num_players:
-		stats.append({
-			"survival_time": 0.0,
-			"jumps": 0,
-			"gold": 0,
-			"death_reason": "",
-		})
 
 	survival_time = 0.0
 
@@ -72,14 +65,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func reset_stats() -> void:
-	for i in num_players:
-		stats[i] = {
-			"survival_time": 0.0,
-			"jumps": 0,
-			"gold": 0,
-			"death_reason": "",
-		}
+	stats = {
+		"survival_time": 0.0,
+		"jumps": 0,
+		"gold": 0,
+		"death_reason": "",
+	}
 
 	survival_time = 0.0
-
-	num_alive_players = num_players

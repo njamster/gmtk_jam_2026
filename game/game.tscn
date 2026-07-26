@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dvctpg6ga8biw" path="res://game/camera.gd" id="2_dxrkv"]
 [ext_resource type="Texture2D" uid="uid://di6s134qdw6lq" path="res://tilemap/tilemap.png" id="3_dakft"]
 [ext_resource type="Script" uid="uid://dexbn7g55tlbf" path="res://tilemap/tile_map.gd" id="4_u5opy"]
+[ext_resource type="PackedScene" uid="uid://c3ptr83dnx0rk" path="res://player/player.tscn" id="5_dxrkv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
 texture = ExtResource("3_dakft")
@@ -71,3 +72,6 @@ shape = SubResource("RectangleShape2D_feb5d")
 [node name="QuakeTimer" type="Timer" parent="." unique_id=1471345245]
 wait_time = 5.0
 autostart = true
+
+[node name="Player" parent="." unique_id=1032192895 instance=ExtResource("5_dxrkv")]
+position = Vector2(24, 492)

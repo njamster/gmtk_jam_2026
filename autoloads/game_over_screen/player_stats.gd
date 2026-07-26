@@ -1,29 +1,22 @@
 extends VBoxContainer
 
 
-var player_id := -1
-
-
-func _ready() -> void:
-	$Player.text = "Player %d" % [player_id + 1]
-
-
 func update() -> void:
-	if Global.stats[player_id].death_reason:
-		$DeathReason.text = Global.stats[player_id].death_reason
+	if Global.stats.death_reason:
+		$DeathReason.text = Global.stats.death_reason
 	else:
 		$DeathReason.text = "You survived!"
 
-	%Gold/Value.text = str(Global.stats[player_id].gold)
+	%Gold/Value.text = str(Global.stats.gold)
 
 	%SurvivalTime/Value.text = "%02d:%02d" % [
-		Global.stats[player_id].survival_time / 60,
-		fmod(Global.stats[player_id].survival_time, 60)
+		Global.stats.survival_time / 60,
+		fmod(Global.stats.survival_time, 60)
 	]
 
-	%NumJumps/Value.text = str(Global.stats[player_id].jumps)
+	%NumJumps/Value.text = str(Global.stats.jumps)
 
-	if Global.stats[player_id].death_reason:
+	if Global.stats.death_reason:
 		%SurvivedState/Value.text = "No"
 	else:
 		%SurvivedState/Value.text = "Yes"

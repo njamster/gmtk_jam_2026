@@ -34,7 +34,7 @@ func _ready():
 	area_entered.connect(func(area):
 		if area.is_in_group("Collectible"):
 			# It's a collectible
-			Global.stats[id-1].gold += 1
+			Global.stats.gold += 1
 			AudioManager.play_sound(preload("res://player/sounds/gold.wav"), -10)
 			area.queue_free()
 		else:
@@ -49,8 +49,6 @@ func _ready():
 func _unhandled_input(event):
 	for dir in inputs.keys():
 		var action = dir
-		if Global.num_players > 1:
-			action = "%s_p%d" % [dir, id]
 		if event.is_action_pressed(action):
 			direction = inputs[dir]
 			if not Global.auto_move and not is_dead and not is_moving:
@@ -74,7 +72,7 @@ func move():
 			tween.parallel().tween_property($Sprite, "scale", 2.0 * Vector2.ONE, 0.75 * move_speed)
 			tween.parallel().tween_property($Sprite, "scale", Vector2.ONE, 0.75 * move_speed).set_delay(0.75 * move_speed)
 			AudioManager.play_sound(preload("res://player/sounds/jump.wav"))
-			Global.stats[id-1].jumps += 1
+			Global.stats.jumps += 1
 		else:
 			# ... and you ran right into it
 			tween.tween_property(self, "position", direction * Global.tile_size, move_speed).as_relative()
@@ -92,7 +90,7 @@ func move():
 
 	await tween.finished
 
-	if is_dead and Global.num_alive_players == 0:
+	if is_dead:
 		Global.game_state = Global.GameState.GAME_OVER
 
 	if Global.decay_enabled:
@@ -106,7 +104,6 @@ func move():
 
 func die(reason: String):
 	is_dead = true
-	Global.num_alive_players -= 1
-	Global.stats[id-1].death_reason = reason
-	Global.stats[id-1].survival_time = Global.survival_time
+	Global.stats.death_reason = reason
+	Global.stats.survival_time = Global.survival_time
 	AudioManager.play_sound(preload("res://player/sounds/hurt.wav"))
