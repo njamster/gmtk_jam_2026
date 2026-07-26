@@ -41,7 +41,7 @@ const TILE_ROTATIONS = [
 const MIN_X := 1
 const MAX_X := 39
 const MIN_Y := 1
-const MAX_Y := 22
+const MAX_Y := 21
 
 
 func _ready() -> void:

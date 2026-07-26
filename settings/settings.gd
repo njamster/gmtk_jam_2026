@@ -8,6 +8,7 @@ func _ready() -> void:
 	%UI.map_to("Audio")
 
 	%Screenshake.map_to("Accessibility")
+	%NumEnemies.map_to("Accessibility")
 
 	%Back.pressed.connect(_back)
 

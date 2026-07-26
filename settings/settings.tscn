@@ -118,6 +118,17 @@ vertical = true
 label = "Screenshake Intensity"
 key = "screenshake_intensity"
 
+[node name="NumEnemies" parent="OuterMargin/Categories/Accessibility/Settings" unique_id=1281359592 instance=ExtResource("2_i854f")]
+unique_name_in_owner = true
+layout_mode = 2
+vertical = true
+label = "Number of Enemies"
+key = "num_enemies"
+is_percentage = false
+value = 10
+max_value = 20
+step_size = 1
+
 [node name="Back" type="Button" parent="OuterMargin" unique_id=893624668]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)

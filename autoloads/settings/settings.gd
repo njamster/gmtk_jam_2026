@@ -51,6 +51,11 @@ class _Accessibility:
 		0,		# min_value
 		100		# max_value
 	)
+	var num_enemies := RangedSetting.new(
+		10,		# default_value
+		0,		# min_value
+		20		# max_value
+	)
 var accessibility := _Accessibility.new()
 
 

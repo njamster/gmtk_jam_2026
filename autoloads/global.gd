@@ -26,8 +26,6 @@ var camera: Camera2D
 
 var tile_size
 
-var num_enemies := 0
-
 # cheat codes :D
 var decay_enabled := true
 var auto_move := true

@@ -6,7 +6,7 @@ func _ready() -> void:
 
 	AudioManager.play_music(preload("res://music/game_music.ogg"))
 
-	for i in Global.num_enemies:
+	for i in Settings.accessibility.num_enemies.value:
 		var enemy := preload("res://enemies/enemy.tscn").instantiate()
 		enemy.global_position = $TileMap.map_to_local(
 			Vector2i(
