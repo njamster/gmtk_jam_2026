@@ -65,6 +65,16 @@ func _unhandled_input(event: InputEvent) -> void:
 				Engine.time_scale = 5.0
 			else:
 				Engine.time_scale = 1.0
+		elif event is InputEventKey and event.keycode == KEY_F12 and event.pressed:
+			take_screenshot()
+
+
+func take_screenshot() -> void:
+	var date = Time.get_date_string_from_system().replace(".","_")
+	var time :String = Time.get_time_string_from_system().replace(":","_")
+	var screenshot_path = "user://" + "screenshot_" + date + "_" + time + ".png"
+	var img = get_viewport().get_texture().get_image()
+	img.save_png(screenshot_path)
 
 
 func reset_stats() -> void:
