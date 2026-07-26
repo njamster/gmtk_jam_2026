@@ -21,6 +21,8 @@ func _read_in_credits_file() -> void:
 		var label := Label.new()
 
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.add_theme_color_override("font_color", Color.GOLD)
+		label.add_theme_font_override("font", preload("res://fonts/caesar_dressing/CaesarDressing-Regular.ttf"))
 		if line.begins_with("# "):
 			%Credits.add_child(VBoxContainer.new())
 

@@ -2,7 +2,30 @@
 
 [ext_resource type="Script" uid="uid://dpujtpm423xx3" path="res://settings/settings.gd" id="1_iirne"]
 [ext_resource type="PackedScene" uid="uid://chdpljrgguem5" path="res://settings/range_setting.tscn" id="2_i854f"]
+[ext_resource type="Texture2D" uid="uid://buupug252s7sy" path="res://background_tile.png" id="2_qsoik"]
+[ext_resource type="FontFile" uid="uid://bg24nlobtsxt" path="res://fonts/caesar_dressing/CaesarDressing-Regular.ttf" id="3_ivjpp"]
 [ext_resource type="Script" uid="uid://cn7t45ltbvp8d" path="res://custom_classes/better_button/better_button.gd" id="3_prb04"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7sn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.84313726, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="Settings" type="Control" unique_id=810074774]
 layout_mode = 3
@@ -13,14 +36,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iirne")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1572571887]
+[node name="Background" type="TextureRect" parent="." unique_id=1404953247]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.2, 0.2, 0.2, 1)
+texture = ExtResource("2_qsoik")
+stretch_mode = 1
 
 [node name="OuterMargin" type="MarginContainer" parent="." unique_id=1393971038]
 layout_mode = 1
@@ -38,6 +62,8 @@ theme_override_constants/margin_bottom = 32
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("3_ivjpp")
 theme_override_font_sizes/font_size = 128
 text = "Settings"
 
@@ -55,6 +81,8 @@ theme_override_constants/separation = 32
 
 [node name="Title" type="Label" parent="OuterMargin/Categories/Audio" unique_id=2037750698]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("3_ivjpp")
 theme_override_font_sizes/font_size = 48
 text = "Volume"
 horizontal_alignment = 1
@@ -101,6 +129,8 @@ theme_override_constants/separation = 32
 
 [node name="Title" type="Label" parent="OuterMargin/Categories/Accessibility" unique_id=561510723]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("3_ivjpp")
 theme_override_font_sizes/font_size = 48
 text = "Accessibility"
 horizontal_alignment = 1
@@ -135,7 +165,13 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme_override_colors/font_focus_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("3_ivjpp")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_fu7sn")
 text = "Back"
 script = ExtResource("3_prb04")
 metadata/_custom_type_script = "uid://cn7t45ltbvp8d"

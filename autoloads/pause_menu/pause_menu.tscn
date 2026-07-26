@@ -1,7 +1,29 @@
 [gd_scene format=3 uid="uid://dkluqakueg6il"]
 
 [ext_resource type="Script" uid="uid://b0vvf43d6bqtd" path="res://autoloads/pause_menu/pause_menu.gd" id="1_eu6kb"]
+[ext_resource type="FontFile" uid="uid://bg24nlobtsxt" path="res://fonts/caesar_dressing/CaesarDressing-Regular.ttf" id="2_haq8n"]
 [ext_resource type="Script" uid="uid://cn7t45ltbvp8d" path="res://custom_classes/better_button/better_button.gd" id="2_nbqai"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7sn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.84313726, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=256486035]
 script = ExtResource("1_eu6kb")
@@ -26,11 +48,14 @@ offset_right = 572.0
 offset_bottom = 116.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 64
 
 [node name="Title" type="Label" parent="VBox" unique_id=108237656]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("2_haq8n")
 theme_override_font_sizes/font_size = 128
 text = "Paused"
 
@@ -45,7 +70,13 @@ theme_override_constants/separation = 48
 [node name="Resume" type="Button" parent="VBox/Buttons" unique_id=838056283]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("2_haq8n")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_fu7sn")
 text = "Resume"
 script = ExtResource("2_nbqai")
 metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
@@ -53,7 +84,13 @@ metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
 [node name="Restart" type="Button" parent="VBox/Buttons" unique_id=785291258]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("2_haq8n")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_fu7sn")
 text = "Restart"
 script = ExtResource("2_nbqai")
 metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
@@ -61,7 +98,13 @@ metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
 [node name="QuitToMenu" type="Button" parent="VBox/Buttons" unique_id=1497823855]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("2_haq8n")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_fu7sn")
 text = "Quit to Menu"
 script = ExtResource("2_nbqai")
 metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
@@ -69,7 +112,13 @@ metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
 [node name="QuitGame" type="Button" parent="VBox/Buttons" unique_id=1785065837]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("2_haq8n")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_fu7sn")
 text = "Quit Game"
 script = ExtResource("2_nbqai")
 metadata/_custom_type_script = "uid://cn7t45ltbvp8d"

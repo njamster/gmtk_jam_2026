@@ -6,10 +6,14 @@ var flavour_texts := {
 		"You survived!!!"
 	],
 	Global.DeathReason.FALL: [
-		"You fell to your death!"
+		"You fell to your death!",
+		"Well... You fell!",
+		"Falling feels funny, isn't it?",
+		"Wowsie! That was deep..."
 	],
 	Global.DeathReason.ENEMY: [
-		"You got killed by an enemy!"
+		"You got killed by an enemy!",
+		"Must have been Ghostface Killah!"
 	]
 }
 
@@ -18,6 +22,9 @@ func update() -> void:
 	$DeathReason.text = flavour_texts[Global.stats.death_reason][
 		randi() % flavour_texts[Global.stats.death_reason].size()
 	]
+
+	if Global.stats.death_reason == Global.DeathReason.NONE and Global.stats.gold == 0:
+		$DeathReason.text = "You survived – but left all that precious gold behind you!"
 
 	%Gold/Value.text = str(Global.stats.gold)
 

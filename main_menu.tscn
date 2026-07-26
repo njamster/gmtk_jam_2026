@@ -2,7 +2,29 @@
 
 [ext_resource type="Script" uid="uid://chy4gbnq4eqfx" path="res://main_menu.gd" id="1_06t4h"]
 [ext_resource type="FontFile" uid="uid://bg24nlobtsxt" path="res://fonts/caesar_dressing/CaesarDressing-Regular.ttf" id="2_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://buupug252s7sy" path="res://background_tile.png" id="2_jix8l"]
 [ext_resource type="Script" uid="uid://cn7t45ltbvp8d" path="res://custom_classes/better_button/better_button.gd" id="3_fu7sn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7sn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.84313726, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="MainMenu" type="Control" unique_id=2027714392]
 layout_mode = 3
@@ -13,14 +35,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_06t4h")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1981208960]
+[node name="Background" type="TextureRect" parent="." unique_id=1179447799]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.2, 0.2, 0.2, 1)
+texture = ExtResource("2_jix8l")
+stretch_mode = 1
 
 [node name="OuterMargin" type="MarginContainer" parent="." unique_id=1135200701]
 layout_mode = 1
@@ -54,7 +77,13 @@ theme_override_constants/separation = 48
 [node name="Play" type="Button" parent="OuterMargin/Buttons" unique_id=522117802]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_focus_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxFlat_fu7sn")
 text = "Play"
 script = ExtResource("3_fu7sn")
 metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
@@ -62,7 +91,13 @@ metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
 [node name="Settings" type="Button" parent="OuterMargin/Buttons" unique_id=1391732786]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_focus_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxFlat_fu7sn")
 text = "Settings"
 script = ExtResource("3_fu7sn")
 metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
@@ -70,7 +105,13 @@ metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
 [node name="Credits" type="Button" parent="OuterMargin/Buttons" unique_id=595164662]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_focus_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxFlat_fu7sn")
 text = "Credits"
 script = ExtResource("3_fu7sn")
 metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
@@ -78,7 +119,13 @@ metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
 [node name="QuitGame" type="Button" parent="OuterMargin/Buttons" unique_id=1052972319]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_focus_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxFlat_fu7sn")
 text = "Quit Game"
 script = ExtResource("3_fu7sn")
 metadata/_custom_type_script = "uid://cn7t45ltbvp8d"

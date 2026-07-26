@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c0vtm51aki77x"]
 
 [ext_resource type="Script" uid="uid://cabdpih4t17pe" path="res://autoloads/game_over_screen/game_over_screen.gd" id="1_gcmpr"]
+[ext_resource type="FontFile" uid="uid://bg24nlobtsxt" path="res://fonts/caesar_dressing/CaesarDressing-Regular.ttf" id="2_ny6sf"]
 [ext_resource type="PackedScene" uid="uid://c80a3ri0pu64y" path="res://autoloads/game_over_screen/player_stats.tscn" id="2_psr2j"]
 
 [node name="GameOverScreen" type="CanvasLayer" unique_id=1416494314]
@@ -30,8 +31,11 @@ theme_override_constants/separation = 32
 
 [node name="Title" type="Label" parent="VBox" unique_id=2127924827]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("2_ny6sf")
 theme_override_font_sizes/font_size = 128
 text = "GAME OVER"
+horizontal_alignment = 1
 
 [node name="Stats" type="HBoxContainer" parent="VBox" unique_id=1704181791]
 unique_name_in_owner = true
@@ -44,6 +48,8 @@ layout_mode = 2
 
 [node name="RetryText" type="Label" parent="VBox" unique_id=1021467158]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_fonts/font = ExtResource("2_ny6sf")
 theme_override_font_sizes/font_size = 48
-text = "Press R to try again"
+text = "Press R (or Start) to try again"
 horizontal_alignment = 1
