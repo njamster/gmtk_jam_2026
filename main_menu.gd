@@ -4,6 +4,8 @@ extends Control
 func _ready() -> void:
 	Global.game_state = Global.GameState.MAIN_MENU
 
+	AudioManager.play_music(preload("res://music/menu_music.ogg"))
+
 	$OuterMargin/Title.text = ProjectSettings.get_setting("application/config/name")
 
 	%Buttons/Play.pressed.connect(_play)

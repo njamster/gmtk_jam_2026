@@ -4,7 +4,7 @@ extends Control
 func _ready() -> void:
 	Global.game_state = Global.GameState.RUNNING
 
-	AudioManager.play_music(preload("res://music/background_music.ogg"), true, false)
+	AudioManager.play_music(preload("res://music/game_music.ogg"))
 
 	for i in Global.num_enemies:
 		var enemy := preload("res://enemies/enemy.tscn").instantiate()

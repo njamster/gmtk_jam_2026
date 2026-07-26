@@ -9,6 +9,7 @@ func _ready() -> void:
 
 func _on_game_state_changed(state: Global.GameState) -> void:
 	if state == Global.GameState.GAME_OVER:
+		AudioManager.play_music(preload("res://music/game_over_music.ogg"))
 		%PlayerStats.update()
 		show()
 	else:
