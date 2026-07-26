@@ -10,6 +10,12 @@ enum GameState {
 	GAME_OVER
 }
 
+enum DeathReason {
+	NONE,
+	FALL,
+	ENEMY
+}
+
 signal game_state_changed(state: GameState)
 
 var game_state := GameState.MAIN_MENU:
@@ -28,13 +34,12 @@ var tile_size
 
 # cheat codes :D
 var decay_enabled := true
-var auto_move := true
 
 var stats := {
 	"survival_time": 0.0,
 	"jumps": 0,
 	"gold": 0,
-	"death_reason": "",
+	"death_reason": DeathReason.NONE,
 }
 
 var survival_time := 0.0
@@ -67,7 +72,7 @@ func reset_stats() -> void:
 		"survival_time": 0.0,
 		"jumps": 0,
 		"gold": 0,
-		"death_reason": "",
+		"death_reason": DeathReason.NONE,
 	}
 
 	survival_time = 0.0

@@ -1,6 +1,5 @@
 extends Area2D
 
-var id := 1
 
 var inputs = {
 	"move_up": Vector2.UP,
@@ -9,101 +8,103 @@ var inputs = {
 	"move_left": Vector2.LEFT
 }
 
-var direction := Vector2.RIGHT
-var move_speed := 0.3 # seconds per tile
-
-var is_moving := false
-var is_dead := false
+var move_direction := Vector2.RIGHT
+var move_speed := 0.3  # seconds per tile
 
 
 func _ready():
-	match id:
-		1:
-			$Sprite.modulate = Color.BLUE
-		2:
-			$Sprite.modulate = Color.WEB_GREEN
-
-	body_entered.connect(func(_body):
-		if not is_dead:
+	body_entered.connect(
+		func(_body):
+			# It's an enemy
 			var tween := create_tween()
 			tween.tween_property($Sprite, "scale", 2.0 * Vector2.ONE, 0.4)
 			tween.tween_property($Sprite, "scale", Vector2.ZERO, 0.2)
-			die("You got killed by an enemy!")
+			die(Global.DeathReason.ENEMY)
 	)
 
-	area_entered.connect(func(area):
-		if area.is_in_group("Collectible"):
-			# It's a collectible
-			Global.stats.gold += 1
-			AudioManager.play_sound(preload("res://player/sounds/gold.wav"), "Sounds", -10)
-			area.queue_free()
-		else:
-			# It's the exit area
-			die("")  # Looks funny, but this means you actually survived :D
+	area_entered.connect(
+		func(area):
+			if area.has_method("pickup"):
+				# It's a collectible
+				area.pickup()
+			else:
+				# It's the exit area
+				Global.stats.survival_time = Global.survival_time
+				Global.game_state = Global.GameState.GAME_OVER
 	)
 
-	if Global.auto_move:
-		move()
+	auto_move()
 
 
 func _unhandled_input(event):
 	for dir in inputs.keys():
-		var action = dir
-		if event.is_action_pressed(action):
-			direction = inputs[dir]
-			if not Global.auto_move and not is_dead and not is_moving:
-				move()
+		if event.is_action_pressed(dir):
+			move_direction = inputs[dir]
 
 
-func move():
-	is_moving = true
+func auto_move():
+	var one_tile_ahead = position + move_direction * Global.tile_size
+	var two_tiles_ahead = position + 2 * move_direction * Global.tile_size
 
-	var tween = create_tween()
-	var previous_position := position
-
-	if not Global.tilemap.is_blocked(position + direction * Global.tile_size):
+	if not Global.tilemap.is_blocked(one_tile_ahead):
 		# next tile is free
-		tween.tween_property(self, "position", direction * Global.tile_size, move_speed).as_relative()
-	elif Global.tilemap.is_gap(position + direction * Global.tile_size):
+		await run()
+	elif Global.tilemap.is_gap(one_tile_ahead):
 		# next tile is a gap...
-		if not Global.tilemap.is_blocked(position + 2 * direction * Global.tile_size):
-			# ... and can be jumped over
-			tween.tween_property(self, "position", 2 * direction * Global.tile_size, 1.5 * move_speed).as_relative()
-			tween.parallel().tween_property($Sprite, "scale", 2.0 * Vector2.ONE, 0.75 * move_speed)
-			tween.parallel().tween_property($Sprite, "scale", Vector2.ONE, 0.75 * move_speed).set_delay(0.75 * move_speed)
-			AudioManager.play_sound(preload("res://player/sounds/jump.wav"))
-			Global.stats.jumps += 1
+		if not Global.tilemap.is_blocked(two_tiles_ahead):
+			await jump(true)  # ... and can be jumped over
 		else:
-			# ... and you ran right into it
-			tween.tween_property(self, "position", direction * Global.tile_size, move_speed).as_relative()
-			tween.tween_property(self, "scale", Vector2.ZERO, move_speed)
-			AudioManager.play_sound(preload("res://player/sounds/wilhelm_scream.ogg"))
-			die("You fell to your death!")
+			await jump(false)  # ... and cannot be jumped over
 	else:
 		# next tile is a wall
-		direction = -1 * direction
-		tween.tween_property(self, "position", direction * Global.tile_size, move_speed).as_relative()
-		if Global.auto_move and not is_dead:
-			move()
-		is_moving = false
-		return  # early
+		move_direction = -1 * move_direction
+		await run()
 
+	auto_move()
+
+
+func run() -> void:
+	var previous_position := position
+
+	var tween = create_tween().set_parallel()
+	tween.tween_property(self, "position", move_direction * Global.tile_size, move_speed).as_relative()
+	if Global.decay_enabled:
+		tween.tween_callback(
+			Global.tilemap.count_down_position.bind(previous_position)
+		).set_delay(0.75 * move_speed)
 	await tween.finished
 
-	if is_dead:
-		Global.game_state = Global.GameState.GAME_OVER
 
+func jump(success: bool) -> void:
+	var previous_position := position
+
+	AudioManager.play_sound(preload("res://player/sounds/jump.wav"))
+
+	var tween = create_tween().set_parallel()
+	tween.tween_property(self, "position", 2 * move_direction * Global.tile_size, 1.5 * move_speed).as_relative()
 	if Global.decay_enabled:
-		Global.tilemap.count_down_position(previous_position)
+		tween.tween_callback(
+			Global.tilemap.count_down_position.bind(previous_position)
+		).set_delay(0.5 * move_speed)
+	tween.tween_property($Sprite, "scale", 2.0 * Vector2.ONE, 0.75 * move_speed)
+	if success:
+		tween.tween_property($Sprite, "scale", Vector2.ONE, 0.75 * move_speed).set_delay(0.75 * move_speed)
+	else:
+		tween.tween_property($Sprite, "scale", Vector2.ZERO, 1.25 * move_speed).set_delay(1.25 * move_speed)
+		tween.tween_callback(
+			AudioManager.play_sound.bind(preload("res://player/sounds/wilhelm_scream.ogg"))
+		).set_delay(1.0 * move_speed)
+	await tween.finished
 
-	if Global.auto_move and not is_dead:
-		move()
+	if success:
+		Global.stats.jumps += 1
+	else:
+		die(Global.DeathReason.FALL)
 
-	is_moving = false
 
-
-func die(reason: String):
-	is_dead = true
+func die(reason: Global.DeathReason) -> void:
 	Global.stats.death_reason = reason
-	Global.stats.survival_time = Global.survival_time
 	AudioManager.play_sound(preload("res://player/sounds/hurt.wav"))
+	Global.stats.survival_time = Global.survival_time
+	Global.game_state = Global.GameState.GAME_OVER
+	queue_free()

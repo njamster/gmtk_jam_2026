@@ -1,11 +1,23 @@
 extends VBoxContainer
 
 
+var flavour_texts := {
+	Global.DeathReason.NONE: [
+		"You survived!!!"
+	],
+	Global.DeathReason.FALL: [
+		"You fell to your death!"
+	],
+	Global.DeathReason.ENEMY: [
+		"You got killed by an enemy!"
+	]
+}
+
+
 func update() -> void:
-	if Global.stats.death_reason:
-		$DeathReason.text = Global.stats.death_reason
-	else:
-		$DeathReason.text = "You survived!"
+	$DeathReason.text = flavour_texts[Global.stats.death_reason][
+		randi() % flavour_texts[Global.stats.death_reason].size()
+	]
 
 	%Gold/Value.text = str(Global.stats.gold)
 

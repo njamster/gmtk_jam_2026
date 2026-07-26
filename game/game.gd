@@ -2,6 +2,8 @@ extends Control
 
 
 func _ready() -> void:
+	Global.reset_stats()
+
 	Global.game_state = Global.GameState.RUNNING
 
 	AudioManager.play_music(preload("res://music/game_music.ogg"))
