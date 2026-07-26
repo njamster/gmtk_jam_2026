@@ -13,6 +13,8 @@ var move_speed := 0.3  # seconds per tile
 
 
 func _ready():
+	Global.player = self
+
 	body_entered.connect(
 		func(_body):
 			# It's an enemy

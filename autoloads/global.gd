@@ -27,8 +27,10 @@ var game_state := GameState.MAIN_MENU:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		game_state_changed.emit(value)
 
+# quick access
 var tilemap: TileMapLayer
 var camera: Camera2D
+var player: Area2D
 
 var tile_size
 

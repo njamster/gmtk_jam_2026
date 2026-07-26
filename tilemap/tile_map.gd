@@ -77,15 +77,16 @@ func spawn_gold(amount: int) -> void:
 		push_warning("Cannot spawn negative amounts of gold!")
 		return  # early
 
-	for i in range(amount):
-		var cell = free_cells.pop_at(randi() % free_cells.size())
-		var gold := preload("res://collectibles/gold/gold.tscn").instantiate()
-		gold.global_position = map_to_local(cell)
-		add_child(gold)
-		gold.spawn()
+	if free_cells.size():
+		for i in range(amount):
+			var cell = free_cells.pop_at(randi() % free_cells.size())
+			var gold := preload("res://collectibles/gold/gold.tscn").instantiate()
+			gold.global_position = map_to_local(cell)
+			add_child(gold)
+			gold.spawn()
 
-		gold_cells[cell] = gold
-		await get_tree().create_timer(0.02).timeout
+			gold_cells[cell] = gold
+			await get_tree().create_timer(0.02).timeout
 
 
 func is_blocked(pos: Vector2) -> bool:
@@ -143,7 +144,8 @@ func earthquake() -> void:
 			var cell = Vector2i(x, y)
 			if get_cell_atlas_coords(cell) == WALL_TILE or \
 			   get_cell_atlas_coords(cell) == GAP_TILE or \
-			   get_cell_atlas_coords(cell) == STURDY_FLOOR:
+			   get_cell_atlas_coords(cell) == STURDY_FLOOR or \
+			   _is_near_player(cell):
 					continue
 			count_down_cell(cell, false)
 
@@ -166,6 +168,8 @@ func small_earthquake() -> void:
 			if tiles[j].size():
 				var random_tile_id = randi() % tiles[j].size()
 				var cell = tiles[j].pop_at(random_tile_id)
+				if _is_near_player(cell):
+					continue
 				count_down_cell(cell)
 				tiles_count_down = true
 		if tiles_count_down:
@@ -175,3 +179,12 @@ func small_earthquake() -> void:
 			break
 
 	spawn_gold(6)
+
+
+func _is_near_player(cell: Vector2i) -> bool:
+	if is_instance_valid(Global.player):
+		var player_cell := local_to_map(Global.player.global_position)
+		if abs(player_cell.x - cell.x) <= 2 and abs(player_cell.y - cell.y) <= 2:
+			return true
+
+	return false
