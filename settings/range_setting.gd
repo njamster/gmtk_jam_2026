@@ -32,6 +32,7 @@ extends BoxContainer
 	set(new_value):
 		min_value = min(new_value, max_value)
 		_update_displayed_value()
+		_check_limits()
 
 
 @export var max_value := 100:
@@ -39,6 +40,7 @@ extends BoxContainer
 		max_value = max(new_value, min_value)
 		_update_displayed_value()
 		_update_width()
+		_check_limits()
 
 @export_range(0, Global.MAX_INT, 1) var step_size := 10:
 	set(new_value):

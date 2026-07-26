@@ -35,7 +35,7 @@ func _ready():
 		if area.is_in_group("Collectible"):
 			# It's a collectible
 			Global.stats.gold += 1
-			AudioManager.play_sound(preload("res://player/sounds/gold.wav"), -10)
+			AudioManager.play_sound(preload("res://player/sounds/gold.wav"), "Sounds", -10)
 			area.queue_free()
 		else:
 			# It's the exit area

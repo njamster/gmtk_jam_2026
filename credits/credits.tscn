@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://rl82ga8sdyau"]
 
 [ext_resource type="Script" uid="uid://b0uxrrf257f71" path="res://credits/credits.gd" id="1_5uwby"]
+[ext_resource type="Script" uid="uid://cn7t45ltbvp8d" path="res://custom_classes/better_button/better_button.gd" id="2_o7wt1"]
 
 [node name="Credits" type="Control" unique_id=1461925648]
 layout_mode = 3
@@ -53,7 +54,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_constants/separation = 32
 
-[node name="Back" type="Button" parent="OuterMargin" unique_id=1081379546]
+[node name="Back" type="Button" parent="OuterMargin" unique_id=1193699754]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -61,3 +62,5 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 32
 text = "Back"
+script = ExtResource("2_o7wt1")
+metadata/_custom_type_script = "uid://cn7t45ltbvp8d"

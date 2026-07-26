@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dkluqakueg6il"]
 
 [ext_resource type="Script" uid="uid://b0vvf43d6bqtd" path="res://autoloads/pause_menu/pause_menu.gd" id="1_eu6kb"]
+[ext_resource type="Script" uid="uid://cn7t45ltbvp8d" path="res://custom_classes/better_button/better_button.gd" id="2_nbqai"]
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=256486035]
 script = ExtResource("1_eu6kb")
@@ -41,26 +42,34 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 48
 
-[node name="Resume" type="Button" parent="VBox/Buttons" unique_id=304431747]
+[node name="Resume" type="Button" parent="VBox/Buttons" unique_id=838056283]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Resume"
+script = ExtResource("2_nbqai")
+metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
 
-[node name="Restart" type="Button" parent="VBox/Buttons" unique_id=1927174153]
+[node name="Restart" type="Button" parent="VBox/Buttons" unique_id=785291258]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Restart"
+script = ExtResource("2_nbqai")
+metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
 
-[node name="QuitToMenu" type="Button" parent="VBox/Buttons" unique_id=1120991008]
+[node name="QuitToMenu" type="Button" parent="VBox/Buttons" unique_id=1497823855]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Quit to Menu"
+script = ExtResource("2_nbqai")
+metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
 
-[node name="QuitGame" type="Button" parent="VBox/Buttons" unique_id=741245560]
+[node name="QuitGame" type="Button" parent="VBox/Buttons" unique_id=1785065837]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Quit Game"
+script = ExtResource("2_nbqai")
+metadata/_custom_type_script = "uid://cn7t45ltbvp8d"

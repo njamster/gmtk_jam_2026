@@ -5,6 +5,7 @@ func _ready() -> void:
 	%Master.map_to("Audio")
 	%Music.map_to("Audio")
 	%SFX.map_to("Audio")
+	%UI.map_to("Audio")
 
 	%Screenshake.map_to("Accessibility")
 

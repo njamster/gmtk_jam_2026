@@ -51,4 +51,5 @@ func _quit_to_menu():
 
 
 func _quit_game() -> void:
+	await get_tree().create_timer(0.3).timeout
 	get_tree().quit()

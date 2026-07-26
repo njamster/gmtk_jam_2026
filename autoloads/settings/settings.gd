@@ -33,6 +33,16 @@ class _Audio:
 				value / 100.0
 			)
 	)
+	var ui := RangedSetting.new(
+		80,		# default_value
+		0,		# min_value
+		100,	# max_value
+		func(value):
+			AudioServer.set_bus_volume_linear(
+				AudioServer.get_bus_index("UI"),
+				value / 100.0
+			)
+	)
 var audio := _Audio.new()
 
 class _Accessibility:

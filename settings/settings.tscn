@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpujtpm423xx3" path="res://settings/settings.gd" id="1_iirne"]
 [ext_resource type="PackedScene" uid="uid://chdpljrgguem5" path="res://settings/range_setting.tscn" id="2_i854f"]
+[ext_resource type="Script" uid="uid://cn7t45ltbvp8d" path="res://custom_classes/better_button/better_button.gd" id="3_prb04"]
 
 [node name="Settings" type="Control" unique_id=810074774]
 layout_mode = 3
@@ -40,16 +41,17 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 128
 text = "Settings"
 
-[node name="Categories" type="VBoxContainer" parent="OuterMargin" unique_id=2073288236]
+[node name="Categories" type="HBoxContainer" parent="OuterMargin" unique_id=1213373713]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 32
+theme_override_constants/separation = 128
 
 [node name="Audio" type="VBoxContainer" parent="OuterMargin/Categories" unique_id=2001935208]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 32
 
 [node name="Title" type="Label" parent="OuterMargin/Categories/Audio" unique_id=2037750698]
 layout_mode = 2
@@ -61,7 +63,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 16
+theme_override_constants/separation = 32
 
 [node name="Master" parent="OuterMargin/Categories/Audio/Settings" unique_id=1013008450 instance=ExtResource("2_i854f")]
 unique_name_in_owner = true
@@ -84,10 +86,18 @@ vertical = true
 label = "Sounds"
 key = "sfx"
 
+[node name="UI" parent="OuterMargin/Categories/Audio/Settings" unique_id=1312797944 instance=ExtResource("2_i854f")]
+unique_name_in_owner = true
+layout_mode = 2
+vertical = true
+label = "UI"
+key = "ui"
+
 [node name="Accessibility" type="VBoxContainer" parent="OuterMargin/Categories" unique_id=1058460432]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 32
 
 [node name="Title" type="Label" parent="OuterMargin/Categories/Accessibility" unique_id=561510723]
 layout_mode = 2
@@ -99,7 +109,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 16
+theme_override_constants/separation = 32
 
 [node name="Screenshake" parent="OuterMargin/Categories/Accessibility/Settings" unique_id=1009214696 instance=ExtResource("2_i854f")]
 unique_name_in_owner = true
@@ -108,7 +118,7 @@ vertical = true
 label = "Screenshake Intensity"
 key = "screenshake_intensity"
 
-[node name="Back" type="Button" parent="OuterMargin" unique_id=635150240]
+[node name="Back" type="Button" parent="OuterMargin" unique_id=893624668]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -116,3 +126,5 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 32
 text = "Back"
+script = ExtResource("3_prb04")
+metadata/_custom_type_script = "uid://cn7t45ltbvp8d"

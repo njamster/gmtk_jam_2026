@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://chdpljrgguem5"]
 
 [ext_resource type="Script" uid="uid://bsh37iitsvynl" path="res://settings/range_setting.gd" id="1_ht8mc"]
+[ext_resource type="Script" uid="uid://cn7t45ltbvp8d" path="res://custom_classes/better_button/better_button.gd" id="2_7ljdr"]
 
 [node name="RangeSetting" type="BoxContainer" unique_id=1013008450]
 offset_right = 217.0
@@ -19,25 +20,30 @@ horizontal_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="Decrease" type="Button" parent="HBox" unique_id=576773243]
+[node name="Decrease" type="Button" parent="HBox" unique_id=1365136929]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 32
 text = "-"
+script = ExtResource("2_7ljdr")
+metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
 
 [node name="Value" type="Label" parent="HBox" unique_id=1712739424]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(70, 0)
+custom_minimum_size = Vector2(107.9, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+text = "80%"
 horizontal_alignment = 1
 
-[node name="Increase" type="Button" parent="HBox" unique_id=1412559615]
+[node name="Increase" type="Button" parent="HBox" unique_id=946139981]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 32
 text = "+"
+script = ExtResource("2_7ljdr")
+metadata/_custom_type_script = "uid://cn7t45ltbvp8d"
