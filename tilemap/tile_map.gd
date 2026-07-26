@@ -31,6 +31,13 @@ const atlas_coords := [
 	DURABILITY_9
 ]
 
+const TILE_ROTATIONS = [
+	0,
+	TileSetAtlasSource.TRANSFORM_TRANSPOSE | TileSetAtlasSource.TRANSFORM_FLIP_H,
+	TileSetAtlasSource.TRANSFORM_FLIP_H | TileSetAtlasSource.TRANSFORM_FLIP_V,
+	TileSetAtlasSource.TRANSFORM_TRANSPOSE | TileSetAtlasSource.TRANSFORM_FLIP_V,
+]
+
 const MIN_X := 1
 const MAX_X := 39
 const MIN_Y := 1
@@ -55,7 +62,7 @@ func randomize_counters() -> void:
 			   get_cell_atlas_coords(cell) == GAP_TILE or \
 			   get_cell_atlas_coords(cell) == STURDY_FLOOR:
 				continue
-			set_cell(cell, 0, atlas_coords[randi_range(1, MAX_DURABILITY)])
+			set_cell(cell, 0, atlas_coords[randi_range(1, MAX_DURABILITY)], TILE_ROTATIONS[randi_range(0, 3)])
 
 			#if randi_range(1, 5) == 1:
 				#var gold := preload("res://collectibles/gold.tscn").instantiate()
@@ -86,23 +93,23 @@ func count_down_cell(cell: Vector2i, play_sounds := true) -> void:
 	var tile_data = get_cell_atlas_coords(cell)
 	match tile_data:
 		DURABILITY_9:
-			set_cell(cell, 0, DURABILITY_8)
+			set_cell(cell, 0, DURABILITY_8, get_cell_alternative_tile(cell))
 		DURABILITY_8:
-			set_cell(cell, 0, DURABILITY_7)
+			set_cell(cell, 0, DURABILITY_7, get_cell_alternative_tile(cell))
 		DURABILITY_7:
-			set_cell(cell, 0, DURABILITY_6)
+			set_cell(cell, 0, DURABILITY_6, get_cell_alternative_tile(cell))
 		DURABILITY_6:
-			set_cell(cell, 0, DURABILITY_5)
+			set_cell(cell, 0, DURABILITY_5, get_cell_alternative_tile(cell))
 		DURABILITY_5:
-			set_cell(cell, 0, DURABILITY_4)
+			set_cell(cell, 0, DURABILITY_4, get_cell_alternative_tile(cell))
 		DURABILITY_4:
-			set_cell(cell, 0, DURABILITY_3)
+			set_cell(cell, 0, DURABILITY_3, get_cell_alternative_tile(cell))
 		DURABILITY_3:
-			set_cell(cell, 0, DURABILITY_2)
+			set_cell(cell, 0, DURABILITY_2, get_cell_alternative_tile(cell))
 		DURABILITY_2:
-			set_cell(cell, 0, DURABILITY_1)
+			set_cell(cell, 0, DURABILITY_1, get_cell_alternative_tile(cell))
 		DURABILITY_1:
-			set_cell(cell, 0, GAP_TILE)
+			set_cell(cell, 0, GAP_TILE, get_cell_alternative_tile(cell))
 			if play_sounds:
 				AudioManager.play_sound(preload("res://tilemap/sounds/crumble.wav"))
 
