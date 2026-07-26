@@ -12,7 +12,7 @@ func _ready() -> void:
 	%Buttons/Settings.pressed.connect(_settings)
 	%Buttons/Credits.pressed.connect(_credits)
 
-	if OS.get_name() == "web":
+	if OS.get_name() == "Web":
 		%Buttons/QuitGame.queue_free()
 	else:
 		%Buttons/QuitGame.pressed.connect(_quit)

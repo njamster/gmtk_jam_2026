@@ -10,7 +10,7 @@ func _ready() -> void:
 	%Buttons/Restart.pressed.connect(_restart)
 	%Buttons/QuitToMenu.pressed.connect(_quit_to_menu)
 
-	if OS.get_name() == "web":
+	if OS.get_name() == "Web":
 		%Buttons/QuitGame.queue_free()
 	else:
 		%Buttons/QuitGame.pressed.connect(_quit_game)

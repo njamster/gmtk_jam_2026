@@ -48,7 +48,7 @@ var survival_time := 0.0
 
 
 func _ready() -> void:
-	if OS.get_name() == "web":
+	if OS.get_name() == "Web":
 		var event = InputEventKey.new()
 		event.physical_keycode = KEY_ESCAPE
 		InputMap.action_erase_event("pause_game", event)
