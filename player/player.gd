@@ -52,9 +52,11 @@ func auto_move():
 	elif Global.tilemap.is_gap(one_tile_ahead):
 		# next tile is a gap...
 		if not Global.tilemap.is_blocked(two_tiles_ahead):
-			await jump(true)  # ... and can be jumped over
-		else:
+			await jump()  # ... and can be jumped over
+		elif Global.tilemap.is_gap(two_tiles_ahead):
 			await jump(false)  # ... and cannot be jumped over
+		else:
+			await run(false)
 	else:
 		# next tile is a wall
 		move_direction = -1 * move_direction
@@ -63,7 +65,7 @@ func auto_move():
 	auto_move()
 
 
-func run() -> void:
+func run(success := true) -> void:
 	var previous_position := position
 
 	var tween = create_tween().set_parallel()
@@ -72,10 +74,18 @@ func run() -> void:
 		tween.tween_callback(
 			Global.tilemap.count_down_position.bind(previous_position)
 		).set_delay(0.75 * move_speed)
+	if not success:
+		tween.tween_property($Sprite, "scale", Vector2.ZERO, 0.75 * move_speed).set_delay(0.75 * move_speed)
+		tween.tween_callback(
+			AudioManager.play_sound.bind(preload("res://player/sounds/wilhelm_scream.ogg"))
+		).set_delay(0.5 * move_speed)
 	await tween.finished
 
+	if not success:
+		die(Global.DeathReason.FALL)
 
-func jump(success: bool) -> void:
+
+func jump(success := true) -> void:
 	var previous_position := position
 
 	AudioManager.play_sound(preload("res://player/sounds/jump.wav"))
